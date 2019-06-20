@@ -20,7 +20,14 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTabbedPane;
  class gg extends JFrame{
-	 int ham[]=new int[6];
+	
+}
+
+public class sell_g extends JFrame {
+	gg gg;
+	JPanel p1,p2,p3;
+	private JPanel contentPane;
+	int ham[]=new int[6];
 	 
 	 public void paint(Graphics g) {
 		
@@ -32,13 +39,6 @@ import javax.swing.JTabbedPane;
 			}
 			g.drawLine(50, 100, 50, 350);
 		}
-}
-
-public class sell_g extends JFrame {
-	gg gg;
-	JPanel p1,p2,p3;
-	private JPanel contentPane;
-
 	
 	
 	
