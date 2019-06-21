@@ -21,7 +21,7 @@ import javax.swing.JList;
 import javax.swing.JTabbedPane;
 
 
- class gg extends JPanel{
+ class sell_g extends JPanel{
 		int ham[]=new int[6];
 		 
 		 public void paint(Graphics g) {
