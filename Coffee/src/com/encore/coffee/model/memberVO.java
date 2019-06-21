@@ -1,6 +1,6 @@
 package com.encore.coffee.model;
 
-public class memberVO {
+public class memberVO {//수정작업 완료 
 	
 	
 	String id;
