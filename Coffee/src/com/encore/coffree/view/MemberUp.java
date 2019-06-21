@@ -85,7 +85,7 @@ public class MemberUp extends JFrame {
 
 		bt_submit.setBounds(50, 360, 90, 25);
 		bt_reset.setBounds(150, 360, 90, 25);
-		bt_checkid.setBounds(190, 30, 90, 25);
+		//bt_checkid.setBounds(190, 30, 90, 25);
 
 		setLayout(null);
 
@@ -119,7 +119,7 @@ public class MemberUp extends JFrame {
 
 		add(bt_submit);
 		add(bt_reset);
-		add(bt_checkid);
+		//add(bt_checkid);
 
 		setBounds(350, 200, 450, 500);
 		setVisible(true);

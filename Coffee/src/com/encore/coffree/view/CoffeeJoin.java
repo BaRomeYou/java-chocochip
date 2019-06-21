@@ -120,7 +120,7 @@ package com.encore.coffree.view;
 	        add(bt_reset);
 	        add(bt_checkid);
 	        
-	        setBounds(350,200,450,500);
+	        setBounds(350,200,450,450);
 	        setVisible(true);
 	      }//»ý¼ºÀÚ
 	      

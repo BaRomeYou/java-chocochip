@@ -27,12 +27,12 @@ public class coffeeloginView extends JFrame{
 		tf_pass = new JPasswordField();
 		bt_login = new JButton("로그인");
 		bt_login.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		bt_login.setBackground(new Color(255, 255, 255));
+		bt_login.setBackground(Color.LIGHT_GRAY);
 		bt_join = new JButton("회원가입");
 		bt_join.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		bt_join.setBackground(Color.WHITE);
+		bt_join.setBackground(Color.LIGHT_GRAY);
 		bt_findID = new JButton("아이디/비번찾기");
-		bt_findID.setBackground(Color.WHITE);
+		bt_findID.setBackground(Color.LIGHT_GRAY);
 		bt_findID.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 
 		la_id = new JLabel("I D");
@@ -40,6 +40,7 @@ public class coffeeloginView extends JFrame{
 		la_id.setHorizontalAlignment(SwingConstants.CENTER);
 		la_id.setFont(new Font("굴림", Font.BOLD, 20));
 		la_pass = new JLabel("Password");
+		la_pass.setBackground(Color.LIGHT_GRAY);
 		la_pass.setForeground(Color.RED);
 		la_pass.setHorizontalAlignment(SwingConstants.CENTER);
 		la_pass.setFont(new Font("굴림", Font.BOLD, 20));
