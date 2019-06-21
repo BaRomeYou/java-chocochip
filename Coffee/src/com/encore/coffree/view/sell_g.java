@@ -19,6 +19,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTabbedPane;
+
+
  class gg extends JPanel{
 		int ham[]=new int[6];
 		 
@@ -30,7 +32,7 @@ import javax.swing.JTabbedPane;
 					g.drawString(i*10+"", 25,255-30*i);
 					g.drawLine(50, 250-30*i, 700, 250-30*i);
 				}
-				g.drawLine(50, 100, 50, 250);
+				g.drawLine(50, 70, 50, 250);
 			}
 }
 
