@@ -19,26 +19,26 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTabbedPane;
- class gg extends JFrame{
-	
+ class gg extends JPanel{
+		int ham[]=new int[6];
+		 
+		 public void paint(Graphics g) {
+			
+				g.clearRect(0, 0, getWidth(), getHeight());
+				g.drawLine(50, 250, 700, 250);
+				for (int i = 0;  i< ham.length; i++) {
+					g.drawString(i*10+"", 25,255-30*i);
+					g.drawLine(50, 250-30*i, 700, 250-30*i);
+				}
+				g.drawLine(50, 100, 50, 250);
+			}
 }
 
 public class sell_g extends JFrame {
 	gg gg;
 	JPanel p1,p2,p3;
 	private JPanel contentPane;
-	int ham[]=new int[6];
-	 
-	 public void paint(Graphics g) {
-		
-			g.clearRect(0, 0, getWidth(), getHeight());
-			g.drawLine(50, 350, 700, 350);
-			for (int i = 0;  i< ham.length; i++) {
-				g.drawString(i*10+"", 25,355-40*i);
-				g.drawLine(50, 350-40*i, 700, 350-40*i);
-			}
-			g.drawLine(50, 100, 50, 350);
-		}
+
 	
 	
 	
@@ -70,12 +70,13 @@ public class sell_g extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		
+		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(14, 24, 710, 325);
-		tabbedPane.add("目乔",p1 =new JPanel());
-		tabbedPane.add("澜丰",p2=new JPanel());
-		tabbedPane.add("海捞目府",p3=new JPanel());
+		tabbedPane.add("目乔",p1 =new gg());
+		tabbedPane.add("澜丰",p2=new gg());
+		tabbedPane.add("海捞目府",p3=new gg());
 		contentPane.add(tabbedPane);
 		
 		
