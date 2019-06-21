@@ -81,6 +81,10 @@ public class sell_g extends JFrame {
 		tabbedPane.add("베이커리",p3=new gg());
 		contentPane.add(tabbedPane);
 		
+		JLabel lblNewLabel = new JLabel("판매수량 그래프");
+		lblNewLabel.setBounds(322, 12, 131, 18);
+		contentPane.add(lblNewLabel);
+		
 		
 	}
 }
