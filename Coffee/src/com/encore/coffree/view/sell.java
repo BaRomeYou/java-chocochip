@@ -42,12 +42,15 @@ public class sell extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	DefaultTableModel dtm;
-	   public JTable table;
-	   JScrollPane scroll_table;
-	   private JButton btnDw;
+	DefaultTableModel dtm,dtm2;
+	   public JTable table,table2;
+	   JScrollPane scroll_table,scroll_table2;
+	   private JButton btnDw,btn;
 	   private JButton btnGr;
-	public sell() {
+	   private JTextField textField_1;
+	   private JTextField textField_2;
+	   
+	   public sell() {
 		
 		 Object [][]rowData = new Object[0][4];	  
 		  String []columTitle = {"NO","메뉴명","가격","수량"};	  
@@ -55,6 +58,13 @@ public class sell extends JFrame {
 		  
 		  table = new JTable(dtm);
 		  scroll_table = new JScrollPane(table);
+		  
+		  Object [][]rowData2 = new Object[0][8];	  
+		  String []columTitle2 = {"번호","이름","아이디","비밀번호","생일","성별","전화번호","메일"};	  
+		  dtm2 = new DefaultTableModel(rowData2,columTitle2);
+		  
+		  table2 = new JTable(dtm2);
+		  scroll_table2 = new JScrollPane(table2);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 635, 524);
@@ -68,6 +78,7 @@ public class sell extends JFrame {
 		tabbedPane.add("회원관리",p1 =new JPanel());
 		tabbedPane.add("판매관리",p2=new JPanel());
 		p2.setLayout(null);
+		p1.setLayout(null);
 		
 		lblNewLabel = new JLabel("총수입");
 		lblNewLabel.setBounds(14, 185, 62, 18);
@@ -76,14 +87,19 @@ public class sell extends JFrame {
 		scroll_table.setBounds(131,53,424,328);
 		p2.add(scroll_table);
 		
+		scroll_table2.setBounds(131,53,424,328);
+		p1.add(scroll_table2);
+		
 		textField = new JTextField();
 		textField.setBounds(57, 182, 62, 24);
 		p2.add(textField);
 		textField.setColumns(10);
-		
+		textField.setEnabled(false);
 		btnDw = new JButton("검색");
 		btnDw.setBounds(280, 14, 105, 27);
 		p2.add(btnDw);
+		
+		
 		
 		btnGr = new JButton("그래프 보기");
 		btnGr.setBounds(412, 14, 128, 27);
@@ -95,6 +111,32 @@ public class sell extends JFrame {
 		comboBox.setBounds(131, 15, 105, 24);
 		p2.add(comboBox);
 		
+		String []str2 =new String[] {"번호","이름","아이디","비밀번호","생일","성별","전화번호","메일"};
+		
+		JComboBox comboBox2
+		= new JComboBox(str2);
+		comboBox2.setBounds(131, 15, 105, 24);
+		p1.add(comboBox2);
+		
+		JLabel label = new JLabel("총인원");
+		label.setBounds(14, 185, 62, 18);
+		p1.add(label);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(57, 182, 62, 24);
+		textField_1.setEnabled(false);
+		p1.add(textField_1);
+		
+		
+		JButton button = new JButton("검색");
+		button.setBounds(396, 14, 105, 27);
+		p1.add(button);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(250, 15, 125, 24);
+		p1.add(textField_2);
+		textField_2.setColumns(10);
 		
 		contentPane.add(tabbedPane);
 	}
