@@ -58,7 +58,7 @@ public class CoffeeDAO {
 		}
 	}
 
-	public boolean findLogin(String id, String pass) {
+	public boolean findLogin(String id, String pass) { //로그인
 			connect();
 
 		
@@ -90,7 +90,7 @@ public class CoffeeDAO {
 	return false;
 	
 }
-	public Boolean create(memberVO vo) {
+	public Boolean create(memberVO vo) { //회원가입 
 		connect();
 		
 	try {
