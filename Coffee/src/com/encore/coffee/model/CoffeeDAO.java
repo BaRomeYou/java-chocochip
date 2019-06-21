@@ -12,7 +12,7 @@ import java.util.Properties;
 
 import javax.sound.midi.Sequence;
 
-public class CoffeeDAO {
+public class CoffeeDAO {//회원 가입 로그인 
 
 	Connection conn;
 	// Statement stmt;
