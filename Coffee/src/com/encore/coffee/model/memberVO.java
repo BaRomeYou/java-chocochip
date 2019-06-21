@@ -1,6 +1,6 @@
 package com.encore.coffee.model;
 
-public class memberVO {
+public class memberVO {//수정작업 완료 
 	
 	
 	String id;
@@ -11,11 +11,13 @@ public class memberVO {
 	String gender;
 	String phone;
 	String mail;
-	String freq;
+	int freq;
 	
+	public memberVO() {
+		
+	}
 	
-	
-	public memberVO(String name, String pwd, String birth, String gender, String phone, String mail, String freq,
+	public memberVO(String name, String pwd, String birth, String gender, String phone, String mail, int freq,
 			String id, int no) {
 		
 		this.name = name;
@@ -78,10 +80,10 @@ public class memberVO {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public String getFreq() {
+	public int getFreq() {
 		return freq;
 	}
-	public void setFreq(String freq) {
+	public void setFreq(int freq) {
 		this.freq = freq;
 	}
 
