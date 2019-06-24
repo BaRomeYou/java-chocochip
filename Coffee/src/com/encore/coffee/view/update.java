@@ -18,7 +18,7 @@ public class update extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_5;
-
+    public JButton btnNewButton,btnNewButton_1;
 	/**
 	 * Launch the application.
 	 */
@@ -82,11 +82,11 @@ public class update extends JFrame {
 		lblNewLabel_3.setBounds(69, 254, 62, 18);
 		contentPane.add(lblNewLabel_3);
 		
-		JButton btnNewButton = new JButton("확인");
+		btnNewButton = new JButton("확인");
 		btnNewButton.setBounds(69, 333, 105, 27);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("취소");
+		btnNewButton_1 = new JButton("취소");
 		btnNewButton_1.setBounds(220, 333, 105, 27);
 		contentPane.add(btnNewButton_1);
 		
