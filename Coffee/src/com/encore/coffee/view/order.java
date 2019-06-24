@@ -2,41 +2,22 @@ package com.encore.coffee.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.io.File;
-
-import javax.swing.JTextField;
-import javax.swing.JTable;
-import javax.swing.JMenuBar;
-import java.awt.GridBagLayout;
+import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import java.awt.Font;
-import javax.swing.JList;
-import java.awt.Component;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JSpinner;
 
 public class order extends JFrame {
 	private JTextField txtJava;
