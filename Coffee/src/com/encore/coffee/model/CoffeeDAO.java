@@ -90,11 +90,12 @@ public class CoffeeDAO {//회원 가입 로그인
 	return false;
 	
 }
-	public Boolean create(memberVO vo) { //회원가입 
+	public Boolean create(memberVO vo) { //회원가입  
+		
 		connect();
 		
 	try {
-		String sql = "insert into member (id,num, name, pwd, birth, gender, phone, mail, freq) values(?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into member (id,num, name, pwd, birth, gender, phone, mail, freq) values(?,member_seq.nextval,?,?,?,?,?,?,?)";
 		stmt.executeUpdate();
 		stmt.setString(1,vo.getId());
 		stmt.setInt(2,vo.getNo());
