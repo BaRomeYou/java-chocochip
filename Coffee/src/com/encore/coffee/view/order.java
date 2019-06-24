@@ -125,6 +125,11 @@ public class order extends JFrame {
 		panel_4.add(panel_8);
 		panel_8.setLayout(null);
 		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\event1.jpg"));
+		lblNewLabel_1.setBounds(0, 0, 452, 35);
+		panel_8.add(lblNewLabel_1);
+		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBackground(new Color(255, 255, 224));
 		tabbedPane.setBounds(0, 81, 452, 335);
@@ -543,28 +548,30 @@ public class order extends JFrame {
 		
 		
 		
+		
 		btnNewButton_1.setFont(new Font("ÇÑÄÄ °íµñ", Font.BOLD, 12));
-		btnNewButton_1.setBackground(new Color(0, 0, 128));
-		btnNewButton_1.setBounds(342, 413, 110, 35);
+		btnNewButton_1.setBackground(new Color(255, 255, 224));
+		btnNewButton_1.setBounds(352, 413, 100, 35);
 		panel.add(btnNewButton_1);
 		
 		
 		JButton button_18 = new JButton("\uC804\uCCB4\uCDE8\uC18C");
-		button_18.setBackground(new Color(128, 0, 0));
+		button_18.setBackground(new Color(255, 255, 224));
 		button_18.setFont(new Font("ÇÑÄÄ °íµñ", Font.BOLD, 12));
 		button_18.setBounds(352, 448, 100, 35);
 		panel.add(button_18);
 		
-		JButton button_19 = new JButton("\uD604\uAE08\uACB0\uC81C");
+		JButton button_19 = new JButton("\uB9E4\uC7A5\uC5D0\uC11C\uACB0\uC81C");
+		
 		
 		button_19.setFont(new Font("ÇÑÄÄ °íµñ", Font.BOLD, 12));
-		button_19.setBackground(new Color(128, 0, 0));
-		button_19.setBounds(342, 481, 110, 35);
+		button_19.setBackground(new Color(255, 255, 224));
+		button_19.setBounds(352, 481, 100, 35);
 		panel.add(button_19);
 		
 		JButton button_20 = new JButton("\uCE74\uB4DC\uACB0\uC81C");
 		button_20.setFont(new Font("ÇÑÄÄ °íµñ", Font.BOLD, 12));
-		button_20.setBackground(new Color(128, 0, 0));
+		button_20.setBackground(new Color(255, 255, 224));
 		button_20.setBounds(352, 514, 100, 35);
 		panel.add(button_20);
 		
@@ -585,6 +592,6 @@ public class order extends JFrame {
 	
 	
 	public static void main(String[] args) {
-	
+		new order();
 	}
 }
