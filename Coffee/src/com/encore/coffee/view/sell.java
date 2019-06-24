@@ -1,4 +1,4 @@
-package com.encore.coffree.view;
+package com.encore.coffee.view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

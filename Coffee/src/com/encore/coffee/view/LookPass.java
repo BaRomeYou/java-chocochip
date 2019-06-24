@@ -1,4 +1,4 @@
-package com.encore.coffree.view;
+package com.encore.coffee.view;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
