@@ -584,7 +584,8 @@ public class order extends JFrame {
 		spinner.setBounds(370, 568, 54, 24);
 		panel.add(spinner);
 		
-	
+		setVisible(true);
+		setSize(445, 675);
 		
 	}
 
