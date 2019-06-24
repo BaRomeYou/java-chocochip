@@ -4,19 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.encore.coffee.view.CoffeeJoin;
-import com.encore.coffee.view.FindID;
-import com.encore.coffee.view.LookID;
-import com.encore.coffee.view.LookPass;
 import com.encore.coffee.view.MainView;
 import com.encore.coffee.view.MemberUp;
 import com.encore.coffee.view.coffeeloginView;
 import com.encore.coffee.view.sell;
 import com.encore.coffee.view.sell_g;
 import com.encore.coffee.view.update;
-import com.encore.coffee.view.order;
 
 
-public class Controller implements ActionListener{
+public class Controller implements ActionListener {
 	
 	MainView mainView;
 	CoffeeJoin joinView;
@@ -25,14 +21,6 @@ public class Controller implements ActionListener{
 	sell_g sell_g;
 	sell sell;
 	update adminUp;
-	FindID findId;
-	LookID lookId;
-	LookPass lookPass;
-	order order;
-	
-	
-	
-	
 	
 	
 	public Controller() {
@@ -44,13 +32,9 @@ public class Controller implements ActionListener{
 		sell_g = new sell_g();
 		sell = new sell();
 		adminUp = new update();
-		findId = new FindID();
-		lookId = new LookID();
-		lookPass = new LookPass();
-		order = new order();
-		
 		eventUp();
 	}
+	
 	public void eventUp() {
 		//CoffeeJoin
 		joinView.bt_checkid.addActionListener(this);
@@ -84,6 +68,7 @@ public class Controller implements ActionListener{
 	public static void main(String[] args) {
 		new Controller();
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
