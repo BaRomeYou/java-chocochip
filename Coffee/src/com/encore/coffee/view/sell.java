@@ -45,8 +45,8 @@ public class sell extends JFrame {
 	DefaultTableModel dtm,dtm2;
 	   public JTable table,table2;
 	   JScrollPane scroll_table,scroll_table2;
-	   private JButton btnDw,btn;
-	   private JButton btnGr;
+	   public JButton btnDw,btn;
+	   public JButton btnGr;
 	   private JTextField textField_1;
 	   private JTextField textField_2;
 	   
