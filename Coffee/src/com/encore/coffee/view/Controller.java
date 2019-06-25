@@ -1,4 +1,4 @@
-package com.encore.coffee.control;
+package com.encore.coffee.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +13,7 @@ import com.encore.coffee.view.coffeeloginView;
 import com.encore.coffee.view.sell;
 import com.encore.coffee.view.sell_g;
 import com.encore.coffee.view.update;
-import com.encore.coffee.view.order;
+
 
 public class Controller implements ActionListener {
 	
