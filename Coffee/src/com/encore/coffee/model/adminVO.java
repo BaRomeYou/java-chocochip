@@ -6,7 +6,7 @@ public class adminVO {
 	String menu;
 	int price;
 	int quantity;
-	String gift;
+
 	
 	
 	
@@ -18,7 +18,7 @@ public class adminVO {
 		this.menu = menu;
 		this.price = price;
 		this.quantity = quantity;
-		this.gift = gift;
+		
 	}
 	
 	public int getNum() {
@@ -45,17 +45,12 @@ public class adminVO {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public String getGift() {
-		return gift;
-	}
-	public void setGift(String gift) {
-		this.gift = gift;
-	}
+
 
 	@Override
 	public String toString() {
-		return "adminVO [Num=" + Num + ", menu=" + menu + ", price=" + price + ", quantity=" + quantity + ", gift="
-				+ gift + "]";
+		return "adminVO [Num=" + Num + ", menu=" + menu + ", price=" + price + ", quantity=" + quantity + "]";
+				
 	}
 	
 	
