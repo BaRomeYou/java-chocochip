@@ -60,17 +60,17 @@ public class CardView extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JLabel la_card = new JLabel("주문 리스트를 확인해주세요.");
-		la_card.setBounds(127, 12, 183, 18);
+		JLabel la_card = new JLabel("Ordered List");
+		la_card.setBounds(175, 12, 88, 18);
 		frame.getContentPane().add(la_card);
 
-		scroll_table.setBounds(31, 42, 369, 115);
+		scroll_table.setBounds(31, 42, 369, 103);
 		frame.getContentPane().add(scroll_table);
 		
 		// 컬럼과 함께 테이블 모델을 지정한다.
 		DefaultTableModel dtm = new DefaultTableModel(rowData, columTitle);
 		table = new JTable(dtm);
-		table.setBounds(31, 42, 369, 116);
+		table.setBounds(31, 42, 369, 93);
 		frame.getContentPane().add(table);
 
 		JButton btn_confirm = new JButton("확인");
@@ -82,13 +82,12 @@ public class CardView extends JFrame {
 		frame.getContentPane().add(btn_cancel);
 		
 		MyDrawing md=new MyDrawing();
-		md.setBounds(31, 180, 230, 80);
+		md.setBounds(31, 169, 304, 76);
 		frame.getContentPane().add(md);
 		
-		
-		JLabel la_name = new JLabel("결제 전 성함을 입력해주세요");
-		la_name.setBounds(31, 160, 210, 18);
-		frame.getContentPane().add(la_name);
+		JLabel lblNewLabel = new JLabel("Signature");
+		lblNewLabel.setBounds(182, 147, 62, 18);
+		frame.getContentPane().add(lblNewLabel);
 		
 	}
 }
