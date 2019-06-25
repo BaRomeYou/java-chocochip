@@ -42,7 +42,11 @@ public class order extends JFrame {
 	private JTextField txtJava;
 	private DefaultTableModel model;
 	
-
+	public JButton button,button_1,button_2,button_3,button_4,button_5,button_6,button_7,button_8,button_9,button_10,button_11;
+	public JButton button_12,button_13,button_14,button_15,button_16,button_17;
+	public JButton btnNewButton_2,button_21,button_22,button_23,btnNewButton_3;
+	public JLabel lblNewLabel_1;
+	
 	
 	public order() {
 		setBackground(new Color(255, 255, 224));
@@ -86,6 +90,16 @@ public class order extends JFrame {
 		txtJava.setBounds(144, 29, 253, 24);
 		panel_1.add(txtJava);
 		txtJava.setColumns(10);
+		
+		JButton btnNewButton_3 = new JButton("\uB85C\uADF8\uC544\uC6C3");
+		btnNewButton_3.setForeground(new Color(255, 0, 0));
+		
+		
+		btnNewButton_3.setBackground(new Color(255, 255, 224));
+		btnNewButton_3.setFont(new Font("ÇÑÄÄ °íµñ", Font.BOLD, 12));
+		btnNewButton_3.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnNewButton_3.setBounds(333, 0, 105, 17);
+		panel_1.add(btnNewButton_3);
 		
 		
 		
@@ -585,7 +599,7 @@ public class order extends JFrame {
 		panel.add(spinner);
 		
 		setVisible(true);
-		setSize(445, 675);
+		setSize(455, 678);
 		
 	}
 
