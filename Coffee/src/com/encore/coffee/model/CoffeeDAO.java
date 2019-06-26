@@ -122,7 +122,7 @@ public class CoffeeDAO {//회원 가입 로그인
 			
 	}
 	
-<<<<<<< HEAD
+
 	public int check_id (String id) { //id중복확인 
 		connect();
 		int cnt=0;
@@ -194,7 +194,7 @@ public class CoffeeDAO {//회원 가입 로그인
 			
 		return pass;
 	}
-=======
+
 	public boolean cancel_all(Collection c) {
 	    boolean modified = false;
 	    Iterator it = list.iterator();
@@ -206,7 +206,6 @@ public class CoffeeDAO {//회원 가입 로그인
 	    }
 	    return modified;
 	}//cancel_all
->>>>>>> refs/remotes/origin/master
-	
+
 	
 }
