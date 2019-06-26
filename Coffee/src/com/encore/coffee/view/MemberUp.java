@@ -39,7 +39,7 @@ public class MemberUp extends JFrame {
 
 		bt_submit = new JButton("등록");
 		bt_reset = new JButton("취소");
-		//bt_checkid = new JButton("중복확인");
+		bt_checkid = new JButton("중복확인");
 
 		String[] gender = { "여성", "남성", "기타" };
 		String[] month = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
@@ -85,7 +85,7 @@ public class MemberUp extends JFrame {
 
 		bt_submit.setBounds(50, 360, 90, 25);
 		bt_reset.setBounds(150, 360, 90, 25);
-		//bt_checkid.setBounds(190, 30, 90, 25);
+		bt_checkid.setBounds(190, 30, 90, 25);
 
 		setLayout(null);
 
