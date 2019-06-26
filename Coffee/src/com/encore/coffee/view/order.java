@@ -43,10 +43,10 @@ public class order extends JFrame {
 	private DefaultTableModel model;
 	
 	public JButton button,button_1,button_2,button_3,button_4,button_5,button_6,button_7,button_8,button_9,button_10,button_11;
-	public JButton button_12,button_13,button_14,button_15,button_16,button_17;
+	public JButton button_12,button_13,button_14,button_15,button_16,button_17,button_18, button_19,button_20;
 	public JButton btnNewButton_2,button_21,button_22,button_23,btnNewButton_3;
 	public JLabel lblNewLabel_1;
-	
+	public JTable table;
 	
 	public order() {
 		setBackground(new Color(255, 255, 224));
