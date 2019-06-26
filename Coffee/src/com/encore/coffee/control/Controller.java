@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 import com.encore.coffee.view.CardView;
 import com.encore.coffee.view.CoffeeJoin;
@@ -178,10 +180,13 @@ public class Controller implements ActionListener {
 	      }else if(obj==adminUp.btnNewButton_1) {//수정(취소)
 	    	
 	    	  int row = odr.table.getSelectedRow();
-	    	  if(row==-1)
-	    	  	{ return; } 
-	    	  else 
-	    		  odr.table.remove(row);
+	    	  if(row==-1) { 
+	    		  JOptionPane.showMessageDialog(odr, "삭제할 아이템을 선택하세요" );
+	    		  return; 
+	    		  } else {
+	    	  DefaultTableModel model = (DefaultTableModel) odr.table.getModel();
+	    	  model.removeRow(row);
+	    		  }
 	    	  
 	         
 	      }else if(obj==odr.button) {
