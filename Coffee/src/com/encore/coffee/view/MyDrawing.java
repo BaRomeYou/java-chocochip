@@ -33,16 +33,11 @@ import javax.swing.JPanel;
 	 
 	}
 
-
-
-
-
 public class MyDrawing extends JPanel {
 	 
 	 JPanel p1,p2;
 	
 	 Canvas can; // 부모타입
-	 
 	 
 	 public MyDrawing(){
 	  //super("::MyDrawing::");
@@ -50,13 +45,10 @@ public class MyDrawing extends JPanel {
 	  p1=new JPanel(); add(p1, "North");
 	  p2=new JPanel(){ // 여백주기
 	   public Insets getInsets(){
-	    return new Insets(10,10,10,10);
+	    return new Insets(0,10,0,10);
 	   }
 	  }; add(p2, "Center");
 	  p2.setBackground(Color.lightGray);
-	  
-	  
-	  
 	  
 	  can=new MyCanvas(); // 도화지 역할을 하는 컴포넌트 MyCanvas는 can을 상속 받는 자식->원이 갑자기 생김
 	  can.setSize(300, 300); // 도화지 크기
@@ -66,16 +58,10 @@ public class MyDrawing extends JPanel {
 	  //리스너 부착 -------------------
 	  MyHandler my=new MyHandler();
 	  can.addMouseMotionListener(my); // 캔버스 객체에 마우스모션리스너를 부착한다.
-	  
-	 
-	    
-	
 	    
 	  //이번에는 메인에서 안하고 생성자에서 한다
 	  setSize(500,500);
 	  setVisible(true);
-	 
-	  
 	 }
 	 
 	 /*이벤트소스: 캔버스

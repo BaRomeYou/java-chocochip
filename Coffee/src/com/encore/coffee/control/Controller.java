@@ -5,7 +5,10 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
+import com.encore.coffee.view.CardView;
 import com.encore.coffee.view.CoffeeJoin;
 import com.encore.coffee.view.MainView;
 import com.encore.coffee.view.MemberUp;
@@ -25,6 +28,7 @@ public class Controller implements ActionListener {
 	sell sell;
 	update adminUp;
 	order odr;
+	CardView cardView;
 	
 	
 	public Controller() {
@@ -36,7 +40,7 @@ public class Controller implements ActionListener {
 		sell_g = new sell_g();
 		sell = new sell();
 		adminUp = new update();
-		odr=new order();
+		odr = new order();
 		eventUp();
 	}
 	
@@ -81,6 +85,9 @@ public class Controller implements ActionListener {
 		odr.button_15.addActionListener(this);
 		odr.button_16.addActionListener(this);
 		odr.button_17.addActionListener(this);
+		odr.button_18.addActionListener(this);
+		odr.button_19.addActionListener(this);
+		odr.button_20.addActionListener(this);
 		odr.button_2.addActionListener(this);
 		odr.button_21.addActionListener(this);
 		odr.button_22.addActionListener(this);
@@ -92,6 +99,8 @@ public class Controller implements ActionListener {
 		odr.button_7.addActionListener(this);
 		odr.button_8.addActionListener(this);
 		odr.button_9.addActionListener(this);
+		cardView.btn_cancel.addActionListener(this);
+		cardView.btn_confirm.addActionListener(this);
 		
 	}
 	
@@ -144,6 +153,98 @@ public class Controller implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		Object obj = e.getSource();
+	      if(obj==loginView.bt_join) {//회원가입 버튼 클릭
+	         
+	         
+	      }else if(obj==loginView.bt_login) {//로그인 버튼 클릭
+	         String id = loginView.tf_id.getText();
+	         String pass = new String(loginView.tf_pass.getPassword());
+	      }else if(obj==loginView.bt_findID) {//아이디, 비밀번호 찾기
+	         
+	      }else if(obj==joinView.bt_checkid) {//중복확인
+	         
+	      }else if(obj==joinView.bt_reset) {//취소
+	         
+	      }else if(obj==joinView.bt_submit) {//회원가입등록
+	         
+	      }else if(obj==memberUp.bt_checkid) {//회원정보수정(중복확인)
+	         
+	      }else if(obj==memberUp.bt_reset) {//회원정보수정(취소)
+	         
+	      }else if(obj==memberUp.bt_submit) {//회원정보수정(등록)
+	         
+	      }else if(obj==adminUp.btnNewButton) {//수정(확인)
+	         
+	      }else if(obj==adminUp.btnNewButton_1) {//수정(취소)
+	    	
+	    	  int row = odr.table.getSelectedRow();
+	    	  if(row==-1) { 
+	    		  JOptionPane.showMessageDialog(odr, "삭제할 아이템을 선택하세요" );
+	    		  return; 
+	    		  } else {
+	    	  DefaultTableModel model = (DefaultTableModel) odr.table.getModel();
+	    	  model.removeRow(row);
+	    		  }
+	    	  
+	         
+	      }else if(obj==odr.button) {
+	         
+	      }else if(obj==odr.button_1) {
+	         
+	      }else if(obj==odr.button_2) {
+	         
+	      }else if(obj==odr.button_3) {
+	         
+	      }else if(obj==odr.button_4) {
+	         
+	      }else if(obj==odr.button_5) {
+	         
+	      }else if(obj==odr.button_6) {
+	         
+	      }else if(obj==odr.button_7) {
+	         
+	      }else if(obj==odr.button_8) {
+	         
+	      }else if(obj==odr.button_9) {
+	         
+	      }else if(obj==odr.button_10) {
+	         
+	      }else if(obj==odr.button_11) {
+	         
+	      }else if(obj==odr.button_12) {
+	         
+	      }else if(obj==odr.button_13) {
+	         
+	      }else if(obj==odr.button_14) {
+	         
+	      }else if(obj==odr.button_15) {
+	         
+	      }else if(obj==odr.button_16) {
+	         
+	      }else if(obj==odr.button_17) {
+	         
+	      }else if(obj==odr.button_18) {
+	         
+	      }else if(obj==odr.button_19) {
+	         
+	      }else if(obj==odr.button_20) {
+	         
+	      }else if(obj==odr.btnNewButton_2) {
+	         
+	      }else if(obj==odr.button_21) {
+	         
+	      }else if(obj==odr.button_22) {
+	         
+	      }else if(obj==odr.button_23) {
+	         
+	      }else if(obj==cardView.btn_confirm) {
+	         
+	      }else if(obj==cardView.btn_cancel) {
+	         
+	      }
+
 		
 		
 	}

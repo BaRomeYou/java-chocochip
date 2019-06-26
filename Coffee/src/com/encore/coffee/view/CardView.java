@@ -24,6 +24,9 @@ public class CardView extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	public JButton btn_cancel;
+	public JButton btn_confirm;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
