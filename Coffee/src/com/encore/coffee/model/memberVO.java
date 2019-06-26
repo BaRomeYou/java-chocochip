@@ -13,9 +13,7 @@ public class memberVO {//수정작업 완료
 	String mail;
 	int freq;
 	
-	public memberVO() {
-		
-	}
+	
 	
 	public memberVO(String name, String pwd, String birth, String gender, String phone, String mail, int freq,
 			String id, int no) {
@@ -31,6 +29,9 @@ public class memberVO {//수정작업 완료
 		this.no = no;
 	}
 	
+	public memberVO() {
+		
+	}
 	
 	public String getId() {
 		return id;

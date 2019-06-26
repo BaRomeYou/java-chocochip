@@ -93,4 +93,5 @@ public class CardView extends JFrame {
 		frame.getContentPane().add(lblNewLabel);
 		
 	}
+
 }

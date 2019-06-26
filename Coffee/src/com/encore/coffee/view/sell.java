@@ -51,7 +51,7 @@ public class sell extends JFrame {
 	   private JTextField textField_2;
 	   
 	   public sell() {
-		
+		   
 		 Object [][]rowData = new Object[0][4];	  
 		  String []columTitle = {"NO","메뉴명","가격","수량"};	  
 		  dtm = new DefaultTableModel(rowData,columTitle);
