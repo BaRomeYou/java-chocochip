@@ -8,9 +8,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Properties;
 
 import javax.sound.midi.Sequence;
+
 
 public class CoffeeDAO {//회원 가입 로그인 
 
@@ -20,6 +24,8 @@ public class CoffeeDAO {//회원 가입 로그인
 	ResultSet rs;
 
 	Properties pro; // DB접속관련 정보 저장 객체
+	
+	ArrayList<Object> list;
 
 	public CoffeeDAO() {
 		try {
@@ -116,9 +122,17 @@ public class CoffeeDAO {//회원 가입 로그인
 			
 	}
 	
-	
-	
-
+	public boolean cancel_all(Collection c) {
+	    boolean modified = false;
+	    Iterator it = list.iterator();
+	    while (it.hasNext()) {
+	        if (c.contains(it.next())) {
+	            it.remove();
+	            modified = true;
+	        }
+	    }
+	    return modified;
+	}
 	
 	
 }
