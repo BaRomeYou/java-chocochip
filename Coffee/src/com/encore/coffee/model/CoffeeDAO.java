@@ -13,8 +13,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Properties;
 
-import javax.sound.midi.Sequence;
-
 
 public class CoffeeDAO {//회원 가입 로그인 
 
@@ -206,6 +204,49 @@ public class CoffeeDAO {//회원 가입 로그인
 	    }
 	    return modified;
 	}//cancel_all
-
+	
+	//오더뷰에서 결제버튼 클릭시
+	public void insertMenu(productVO vo) {
+		connect();
+		try {
+			String sql="INSERT INTO menu (menu_id,menu,price,quantity) "
+					+ "VALUES(?,?,?,?)";
+			stmt = conn.prepareStatement(sql);
+			stmt.executeUpdate();
+			stmt.setString(1, vo.getMenu_id());
+			stmt.setString(2, vo.getMenu());
+			stmt.setInt(3, vo.getPrice());
+			stmt.setInt(4, vo.getQuantity());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+	}
+	//결제화면 주문메뉴 출력
+	public ArrayList<productVO> selectList(String menu_id) {
+		connect();
+		ArrayList<productVO> list = new ArrayList<productVO>();
+		try {
+			String sql = "SELECT menu, price, quantity FROM menu WHERE menu_id = ?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, "menu_id");
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				productVO vo = new productVO();
+				vo.setMenu_id(rs.getString("menu_id"));
+				vo.setMenu(rs.getString("menu"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setQuantity(rs.getInt("quantity"));
+				
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return list;
+	}
 	
 }
