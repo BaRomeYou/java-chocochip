@@ -2,6 +2,8 @@ package com.encore.coffee.view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -49,7 +51,7 @@ public class sell extends JFrame {
 	   public JButton btnGr;
 	   private JTextField textField_1;
 	   private JTextField textField_2;
-	   
+	   public JComboBox comboBox, comboBox2;
 	   public sell() {
 		   
 		 Object [][]rowData = new Object[0][4];	  
@@ -140,4 +142,15 @@ public class sell extends JFrame {
 		
 		contentPane.add(tabbedPane);
 	}
+	   
+	   public Map<String, String> memberSearch(){
+		   String keyword =  comboBox2.getSelectedItem().toString();
+		   String title=""; 
+		   
+		   Map<String, String> map = new HashMap<String, String>();
+		   map.put("keyword", keyword);
+		   map.put("title",title);
+		   return map;
+	   }
+	   
 }

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 
 
@@ -247,6 +248,86 @@ public class CoffeeDAO {//회원 가입 로그인
 			disconnect();
 		}
 		return list;
+	}
+	
+	public boolean member_up(memberVO vo) { //회원 정보수정 
+		connect();
+		try {
+			String sql = "update membershipt set pwd=?, birth=?, email=?, gender=?"
+					+ "where id=?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, vo.getPwd());
+			stmt.setString(2, vo.getBirth());
+			stmt.setString(3, vo.getMail());
+			stmt.setString(4, vo.getGender());
+			int t = stmt.executeUpdate();
+			
+			if(t==1)
+				return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false; 
+		
+			
+	}
+	
+	public ArrayList<memberVO> findSearch(Map<String, String> map){ //관리자 창 -> 회원정보 가져오기 (콤보박스 값별) 
+		connect();
+		
+		ArrayList<memberVO> list = new ArrayList<memberVO>();
+		memberVO vo = null; 
+		try {
+		String sql = "select no, name, id, pwd, birth, gender, phone, email from member";
+		
+		String title = map.get("title");
+		String keyword = map.get("keyword");
+		
+		if(title.equals("번호"))
+			sql += "where no=?";
+		else if(title.equals("이름"))
+			sql += "wehre name=?";
+		else if (title.equals("아이디"))
+			sql += "where id=?";
+		else if (title.equals("비밀번호"))
+			sql += "where pwd=?";
+		else if (title.equals("생일"))
+			sql += "where birth=?";
+		else if (title.equals("성별"))
+				sql += "where gender=?";
+		else if (title.equals("전화번호"))
+			sql += "where phone=?";
+		else if (title.equals("메일"))
+			sql += "where email=?";
+		
+	
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, "%"+keyword+"%");
+			rs = stmt.executeQuery(); 
+			
+			if(rs.next()) {
+				vo =  new memberVO();
+				vo.setNo(rs.getInt("no"));
+				vo.setName(rs.getString("name"));
+				vo.setId(rs.getString("id"));
+				vo.setPwd(rs.getString("pwd"));
+				vo.setBirth(rs.getString("birth"));
+				vo.setGender(rs.getString("gender"));
+				vo.setPhone(rs.getString("phone"));
+				vo.setMail(rs.getString("email"));
+				
+				
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return list; 
 	}
 	
 }

@@ -17,6 +17,7 @@ public class CashView {
 	private JTable table;
 	private DefaultTableModel dtm;
 	private JScrollPane scroll_table;
+	public JButton btn_confirm, btn_cancel;
 	/**
 	 * Launch the application.
 	 */
