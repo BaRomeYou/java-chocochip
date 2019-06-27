@@ -9,18 +9,20 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.encore.coffee.view.CardView;
+import com.encore.coffee.view.CashView;
 import com.encore.coffee.view.CoffeeJoin;
-import com.encore.coffee.view.MainView;
+import com.encore.coffee.view.FindID;
+import com.encore.coffee.view.LookID;
+import com.encore.coffee.view.LookPass;
 import com.encore.coffee.view.MemberUp;
 import com.encore.coffee.view.coffeeloginView;
+import com.encore.coffee.view.order;
 import com.encore.coffee.view.sell;
 import com.encore.coffee.view.sell_g;
 import com.encore.coffee.view.update;
-import com.encore.coffee.view.order;
 
 public class Controller implements ActionListener {
 	
-	MainView mainView;
 	CoffeeJoin joinView;
 	coffeeloginView loginView;
 	MemberUp memberUp;
@@ -29,11 +31,14 @@ public class Controller implements ActionListener {
 	update adminUp;
 	order odr;
 	CardView cardView;
+	CashView cashView;
+	FindID findId;
+	LookID lookId;
+	LookPass lookPass;
 	
 	
 	public Controller() {
 		
-		mainView = new MainView();
 		joinView = new CoffeeJoin();
 		loginView = new coffeeloginView();
 		memberUp = new MemberUp();
@@ -41,6 +46,11 @@ public class Controller implements ActionListener {
 		sell = new sell();
 		adminUp = new update();
 		odr = new order();
+		cardView = new CardView();
+		cashView = new CashView();
+		findId = new FindID();
+		lookId = new LookID();
+		lookPass = new LookPass();
 		eventUp();
 	}
 	
@@ -99,9 +109,27 @@ public class Controller implements ActionListener {
 		odr.button_7.addActionListener(this);
 		odr.button_8.addActionListener(this);
 		odr.button_9.addActionListener(this);
+		
+		//cardView
 		cardView.btn_cancel.addActionListener(this);
 		cardView.btn_confirm.addActionListener(this);
 		
+		//cashView
+		cashView.btn_cancel.addActionListener(this);
+		cashView.btn_confirm.addActionListener(this);
+		
+		//findId
+		findId.bt_close.addActionListener(this);
+		findId.bt_findID.addActionListener(this);
+		findId.bt_findPass.addActionListener(this);
+		
+		//lookId
+		lookId.bt_back.addActionListener(this);
+		lookPass.bt_find.addActionListener(this);
+		
+		//lookPass
+		lookPass.bt_back.addActionListener(this);
+		lookPass.bt_find.addActionListener(this);
 	}
 	
 	//로그인 버튼눌러서 회원정보가 확인되어서 order뷰가 뜰때 pop창에 생성되야할 클래스
@@ -243,6 +271,24 @@ public class Controller implements ActionListener {
 	         
 	      }else if(obj==cardView.btn_cancel) {
 	         
+	      }else if(obj==cashView.btn_confirm) {//현금결제 확인버튼
+	    	  
+	      }else if(obj==cashView.btn_cancel) {//현금결제 취소버튼
+	    	  
+	      }else if(obj==findId.bt_findID) {//아이디비밀번호 찾기(아이디버튼)
+	    	  
+	      }else if(obj==findId.bt_findPass) {//아이디비밀번호 찾기(비밀번호버튼)
+	    	  
+	      }else if(obj==findId.bt_close) {//아이디비밀번호 찾기(닫기)
+	    	  
+	      }else if(obj==lookId.bt_find) {//아이디로 찾기(찾기버튼)
+	    	  
+	      }else if(obj==lookId.bt_back) {//아이디로 찾기(되돌아가기)
+	    	  
+	      }else if(obj==lookPass.bt_find) {//비밀번호로 찾기(찾기버튼)
+	    	  
+	      }else if(obj==lookPass.bt_back) {//비밀번호로 찾기(되돌아가기)
+	    	  
 	      }
 
 		
