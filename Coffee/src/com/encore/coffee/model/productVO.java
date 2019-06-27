@@ -1,31 +1,30 @@
 package com.encore.coffee.model;
 
-public class adminVO {
+public class productVO {
 	
-	int Num;
-	String menu;
-	int price;
-	int quantity;
-
-	
+	private String menu_id;
+	private String menu;
+	private int price;
+	private int quantity;
 	
 	
 	
 	
-	public adminVO(int num, String menu, int price, int quantity, String gift) {
+	
+	
+	public productVO(String menu_id, String menu, int price, int quantity) {
 		
-		this.Num = num;
+		this.menu_id = menu_id;
 		this.menu = menu;
 		this.price = price;
 		this.quantity = quantity;
-		
 	}
 	
-	public int getNum() {
-		return Num;
+	public String getMenu_id() {
+		return menu_id;
 	}
-	public void setNum(int num) {
-		Num = num;
+	public void setMenu_id(String menu_id) {
+		this.menu_id = menu_id;
 	}
 	public String getMenu() {
 		return menu;
@@ -46,13 +45,12 @@ public class adminVO {
 		this.quantity = quantity;
 	}
 
-
 	@Override
 	public String toString() {
-		return "adminVO [Num=" + Num + ", menu=" + menu + ", price=" + price + ", quantity=" + quantity + "]";
-				
-	}
-	
-	
+		return "productVO [menu_id=" + menu_id + ", menu=" + menu + ", price=" + price + ", quantity=" + quantity + "]";
+	} 
 
+	
+	
+	
 }

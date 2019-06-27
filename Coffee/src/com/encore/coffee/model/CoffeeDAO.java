@@ -8,9 +8,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Properties;
 
 import javax.sound.midi.Sequence;
+
 
 public class CoffeeDAO {//회원 가입 로그인 
 
@@ -20,6 +24,8 @@ public class CoffeeDAO {//회원 가입 로그인
 	ResultSet rs;
 
 	Properties pro; // DB접속관련 정보 저장 객체
+	
+	ArrayList<Object> list;
 
 	public CoffeeDAO() {
 		try {
@@ -116,9 +122,90 @@ public class CoffeeDAO {//회원 가입 로그인
 			
 	}
 	
-	
-	
 
+	public int check_id (String id) { //id중복확인 
+		connect();
+		int cnt=0;
+		
+		try {
+			String sql = "select count(*) cnt from member where id=?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, id);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				cnt = rs.getInt("cnt");
+			
+			}
+						
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
+		
+		return cnt;
+	}
 	
+	public String find_id(String email) { //아이디 찾기 
+		connect();
+		String id = null;
+		
+		
+		try {
+			String sql = "select id from member where email=?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, email);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				id = rs.getString("id");
+			
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
+		
+		return id;
+	} 
+	
+	public String find_pass(String id, String email) { // 패스워드 찾기  
+		connect();
+		String pass=null;
+		
+		try {
+			String sql = "select pwd from member where id=? and email=?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1,id);
+			stmt.setString(2, email);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				pass = rs.getString("pwd");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+			
+		return pass;
+	}
+
+	public boolean cancel_all(Collection c) {
+	    boolean modified = false;
+	    Iterator it = list.iterator();
+	    while (it.hasNext()) {
+	        if (c.contains(it.next())) {
+	            it.remove();
+	            modified = true;
+	        }
+	    }
+	    return modified;
+	}//cancel_all
+
 	
 }

@@ -87,4 +87,6 @@ public class sell_g extends JFrame {
 		
 		
 	}
+	
+	
 }
