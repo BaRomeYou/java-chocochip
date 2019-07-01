@@ -32,7 +32,7 @@ public class FindID extends JFrame{
 		getContentPane().add(bt_findPass);
 		getContentPane().add(bt_findID);
 		
-		JButton bt_close = new JButton("´Ý±â");
+		bt_close = new JButton("´Ý±â");
 		bt_close.setFont(new Font("±¼¸²", Font.PLAIN, 15));
 		bt_close.setBackground(Color.RED);
 		bt_close.setForeground(Color.WHITE);

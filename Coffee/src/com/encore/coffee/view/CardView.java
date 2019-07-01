@@ -8,13 +8,14 @@ import java.awt.Graphics;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 
-public class CardView extends JFrame {
+public class CardView  {
 
 	private JFrame frame;
 	private JTable table;
@@ -26,6 +27,8 @@ public class CardView extends JFrame {
 	 */
 	public JButton btn_cancel;
 	public JButton btn_confirm;
+	
+	public MyDrawing md;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -76,21 +79,23 @@ public class CardView extends JFrame {
 		table.setBounds(31, 42, 369, 93);
 		frame.getContentPane().add(table);
 
-		JButton btn_confirm = new JButton("확인");
+		btn_confirm = new JButton("확인");
 		btn_confirm.setBounds(339, 190, 61, 27);
 		frame.getContentPane().add(btn_confirm);
 
-		JButton btn_cancel = new JButton("취소");
+		btn_cancel = new JButton("취소");
 		btn_cancel.setBounds(339, 218, 61, 27);
 		frame.getContentPane().add(btn_cancel);
 		
-		MyDrawing md=new MyDrawing();
+		md=new MyDrawing();
 		md.setBounds(31, 169, 304, 76);
 		frame.getContentPane().add(md);
-		
+				
 		JLabel lblNewLabel = new JLabel("Signature");
 		lblNewLabel.setBounds(182, 147, 62, 18);
 		frame.getContentPane().add(lblNewLabel);
+		System.out.println("체크>>>");
+	    frame.setVisible(true);
 		
 	}
 

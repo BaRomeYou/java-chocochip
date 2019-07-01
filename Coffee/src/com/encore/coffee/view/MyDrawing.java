@@ -2,16 +2,19 @@ package com.encore.coffee.view;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
  class MyCanvas extends Canvas {
@@ -33,15 +36,18 @@ import javax.swing.JPanel;
 	 
 	}
 
+ 
 public class MyDrawing extends JPanel {
 	 
 	 JPanel p1,p2;
 	
 	 Canvas can; // 부모타입
+	 public MyHandler my;
 	 
 	 public MyDrawing(){
 	  //super("::MyDrawing::");
-	  
+	  System.out.println("MyDrawing생성자");
+		 
 	  p1=new JPanel(); add(p1, "North");
 	  p2=new JPanel(){ // 여백주기
 	   public Insets getInsets(){
@@ -56,7 +62,7 @@ public class MyDrawing extends JPanel {
 	  p2.add(can);
 	  
 	  //리스너 부착 -------------------
-	  MyHandler my=new MyHandler();
+	   my=new MyHandler();
 	  can.addMouseMotionListener(my); // 캔버스 객체에 마우스모션리스너를 부착한다.
 	    
 	  //이번에는 메인에서 안하고 생성자에서 한다
@@ -64,23 +70,44 @@ public class MyDrawing extends JPanel {
 	  setVisible(true);
 	 }
 	 
+	 
 	 /*이벤트소스: 캔버스
 	  * 이벤트: MouseEvent
 	  * 이벤트 핸들러: MouseMotionListener를 구현
 	  * */
 	 
-	 class MyHandler implements MouseMotionListener, ActionListener{
+	 
+	 public class MyHandler implements MouseMotionListener, ActionListener{
+		ArrayList list = new ArrayList();//
 	  
+		public MyHandler() {
+		   System.out.println("MyHandler생성자");
+		}
+		
+		
 	  public void mouseDragged(MouseEvent e){
 	   
 	   //마우스를 드래그한 지점의 x좌표,y좌표를 얻어와서 can의 x,y 좌표값에 전달한다.
-	   int xx=e.getX(); int yy=e.getY();
+	   int xx=e.getX();  int yy=e.getY();
 	   
 	   ((MyCanvas)can).x=xx; ((MyCanvas)can).y=yy;
 	   
 	   //paint()는 JVM이 호출해주는 메소드으로 변경x, repaint을 써서 재사용하자
-	   can.repaint();
-	   
+	   can.repaint();	   
+	   list.add("sign");
+	  }
+	  
+	  
+	  public boolean checkSign() {
+		  System.out.println("list size>>>"+ list.size());
+		  if(list.size()==0) {
+			  JOptionPane.showConfirmDialog(null, "사인해주세요!!");
+		  }
+		  return false;
+	  }
+	  
+	  public void clearCanvas() {
+		  list.clear();
 	  }
 	  
 	  public void mouseMoved(MouseEvent e){
@@ -88,16 +115,14 @@ public class MyDrawing extends JPanel {
 	  
 	  public void actionPerformed(ActionEvent e){
 	   Object o=e.getSource();
-	   MyCanvas can2 = (MyCanvas)can;
-	   
-	  
-	  }
+	   MyCanvas can2 = (MyCanvas)can;	 
+	 }
 	 }
 	 
-	 /*
+	 
 	 public static void main(String[] args) {
-	  new MyDrawing(); // 생성자 불러오기
+	    new MyDrawing(); 
 	 }
-	 */
+	
 	 
 	}

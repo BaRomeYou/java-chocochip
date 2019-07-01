@@ -2,6 +2,7 @@ package com.encore.coffee.control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.swing.ImageIcon;
@@ -15,6 +16,7 @@ import com.encore.coffee.view.FindID;
 import com.encore.coffee.view.LookID;
 import com.encore.coffee.view.LookPass;
 import com.encore.coffee.view.MemberUp;
+import com.encore.coffee.view.MyDrawing;
 import com.encore.coffee.view.coffeeloginView;
 import com.encore.coffee.view.order;
 import com.encore.coffee.view.sell;
@@ -35,10 +37,12 @@ public class Controller implements ActionListener {
 	FindID findId;
 	LookID lookId;
 	LookPass lookPass;
+	MyDrawing md;
+	
 	
 	
 	public Controller() {
-		
+		 
 		joinView = new CoffeeJoin();
 		loginView = new coffeeloginView();
 		memberUp = new MemberUp();
@@ -47,6 +51,7 @@ public class Controller implements ActionListener {
 		adminUp = new update();
 		odr = new order();
 		cardView = new CardView();
+		md=cardView.md;
 		cashView = new CashView();
 		findId = new FindID();
 		lookId = new LookID();
@@ -73,7 +78,9 @@ public class Controller implements ActionListener {
 		//sell_g
 		
 		//sell
-		sell.btn.addActionListener(this);
+		System.out.println("sell>>>"+sell);
+		System.out.println("btn>>>"+sell.btn);
+		//sell.btn.addActionListener(this);
 		sell.btnDw.addActionListener(this);
 		sell.btnGr.addActionListener(this);
 		
@@ -254,6 +261,9 @@ public class Controller implements ActionListener {
 	      }else if(obj==odr.button_17) {
 	         
 	      }else if(obj==odr.button_18) {
+	    	  JOptionPane.showConfirmDialog(odr, "모두 취소하시겠습니까?");
+	    	  DefaultTableModel model = (DefaultTableModel) odr.table.getModel();
+	    	  model.setRowCount(0);
 	         
 	      }else if(obj==odr.button_19) {
 	         
@@ -268,7 +278,13 @@ public class Controller implements ActionListener {
 	      }else if(obj==odr.button_23) {
 	         
 	      }else if(obj==cardView.btn_confirm) {
-	         
+	    	 
+	    	  md.my.checkSign();
+	    	  
+	    	 
+	    	  
+	    	 
+	    	 
 	      }else if(obj==cardView.btn_cancel) {
 	         
 	      }else if(obj==cashView.btn_confirm) {//현금결제 확인버튼

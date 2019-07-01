@@ -26,7 +26,6 @@ public class CoffeeDAO {//회원 가입 로그인
 
 	Properties pro; // DB접속관련 정보 저장 객체
 	
-	ArrayList<Object> list;
 
 	public CoffeeDAO() {
 		try {
@@ -195,19 +194,6 @@ public class CoffeeDAO {//회원 가입 로그인
 			
 		return pass;
 	}
-
-	public boolean cancel_all(Collection c) {
-	    boolean modified = false;
-	    Iterator it = list.iterator();
-	    while (it.hasNext()) {
-	        if (c.contains(it.next())) {
-	            it.remove();
-	            modified = true;
-	        }
-	    }
-	    return modified;
-	}//cancel_all
-
 	
 	public boolean member_up(memberVO vo) { //회원 정보수정 
 		connect();

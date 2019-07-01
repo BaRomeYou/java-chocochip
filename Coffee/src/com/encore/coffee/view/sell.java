@@ -52,6 +52,7 @@ public class sell extends JFrame {
 	   private JTextField textField_1;
 	   private JTextField textField_2;
 	   public JComboBox comboBox, comboBox2;
+	   
 	   public sell() {
 		   
 		 Object [][]rowData = new Object[0][4];	  
@@ -115,8 +116,7 @@ public class sell extends JFrame {
 		
 		String []str2 =new String[] {"번호","이름","아이디","비밀번호","생일","성별","전화번호","메일"};
 		
-		JComboBox comboBox2
-		= new JComboBox(str2);
+		JComboBox comboBox2 = new JComboBox(str2);
 		comboBox2.setBounds(131, 15, 105, 24);
 		p1.add(comboBox2);
 		
