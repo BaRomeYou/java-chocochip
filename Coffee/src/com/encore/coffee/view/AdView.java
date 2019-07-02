@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 public class AdView {
 
 	private JFrame frame;
-
+	
 	/**
 	 * Launch the application.
 	 */

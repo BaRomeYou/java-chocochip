@@ -1,7 +1,5 @@
 package com.encore.coffee.view;
-	
-import java.awt.Font;
-
+   
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -10,7 +8,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class CoffeeJoin extends JFrame{
-    public JTextField tf_id, tf_name, tf_phone1, tf_phone2, tf_phone3, tf_email;
+      public JTextField tf_id, tf_name, tf_phone1, tf_phone2, tf_phone3, tf_email;
       public JPasswordField tf_pass, tf_pass2;
       public JButton bt_submit, bt_reset, bt_checkid;
       public JComboBox<String> cb_gender, cb_month, cb_email;
@@ -46,12 +44,12 @@ public class CoffeeJoin extends JFrame{
         cb_gender = new JComboBox<String>(gender);
         cb_email = new JComboBox<String>(email);
         cb_year = new JComboBox();
-        cb_date = new JComboBox();	        
+        cb_date = new JComboBox();           
         for(int i=1;i<=31;i++) 
-        	cb_date.addItem(i);
+           cb_date.addItem(i);
         for(int i=2019;i>1970;i--)
-        	cb_year.addItem(i);
-        	
+           cb_year.addItem(i);
+           
         //----------------------JLabel생성-------------------------------------
         String []labelTitle= {"I  D","비  번","비번확인","이  름","생년월일",
               "전화번호","Email","성  별","-","-"};
@@ -128,9 +126,5 @@ public class CoffeeJoin extends JFrame{
         setBounds(350,200,450,450);
         setVisible(true);
       }//생성자
-      
-      public static void main(String[] args) {
-          new CoffeeJoin();
-      }
       
    }//CoffeeJoin
