@@ -63,14 +63,14 @@ public class CashView {
       scroll_table.setBounds(31, 92, 369, 115);
       frame.getContentPane().add(scroll_table);
 
-      JButton btn_confirm = new JButton("확인");
+      btn_confirm = new JButton("확인");
       btn_confirm.setBounds(95, 214, 105, 27);
       frame.getContentPane().add(btn_confirm);
       
-      JButton btn_cancel = new JButton("취소");
+      btn_cancel = new JButton("취소");
       btn_cancel.setBounds(205, 214, 105, 27);
       frame.getContentPane().add(btn_cancel);
-      frame.setVisible(true);
+      frame.setVisible(false);
 
    }
 

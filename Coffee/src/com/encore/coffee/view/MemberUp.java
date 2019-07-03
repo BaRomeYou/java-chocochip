@@ -129,7 +129,7 @@ public class MemberUp extends JFrame {
         add(bt_checkid);
         
         setBounds(350,200,450,450);
-        setVisible(true);
+        setVisible(false);
    }// »ý¼ºÀÚ
 
    public void showMsg(String msg) {

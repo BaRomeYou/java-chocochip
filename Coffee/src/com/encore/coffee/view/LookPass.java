@@ -48,7 +48,7 @@ public class LookPass extends JFrame {
 
       setLayout(null);
       setBounds(400, 300, 500, 354);
-      setVisible(true);
+      setVisible(false);
       setResizable(false);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
    }

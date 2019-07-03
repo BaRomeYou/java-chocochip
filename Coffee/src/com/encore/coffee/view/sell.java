@@ -139,7 +139,7 @@ public class sell extends JFrame {
       textField_2.setColumns(10);
 
       contentPane.add(tabbedPane);
-      setVisible(true);
+      setVisible(false);
    }
 
    public Map<String, String> memberSearch() {

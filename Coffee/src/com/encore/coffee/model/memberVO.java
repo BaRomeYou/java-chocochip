@@ -15,8 +15,8 @@ public class memberVO {//수정작업 완료
 	
 	
 	
-	public memberVO(String name, String pwd, String birth, String gender, String phone, String mail, int freq,
-			String id, int no) {
+	public memberVO(String id, String pwd, String name,  String birth, String phone, String mail, String gender  
+			) {
 		
 		this.name = name;
 		this.pwd = pwd;
@@ -24,9 +24,9 @@ public class memberVO {//수정작업 완료
 		this.gender = gender;
 		this.phone = phone;
 		this.mail = mail;
-		this.freq = freq;
+		
 		this.id = id;
-		this.no = no;
+		
 	}
 	
 	public memberVO() {

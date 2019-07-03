@@ -397,6 +397,8 @@ public class Controller implements ActionListener, MouseListener {
 
 		Object obj = e.getSource();
 		if (obj == loginView.bt_join) {// 회원가입 버튼 클릭
+			  loginView.setVisible(false);
+	    	  joinView.setVisible(true);
 
 		} else if (obj == loginView.bt_login) {// 로그인 버튼 클릭
 			String id = loginView.tf_id.getText();
@@ -412,13 +414,50 @@ public class Controller implements ActionListener, MouseListener {
 			}
 
 		} else if (obj == loginView.bt_findID) {// 아이디, 비밀번호 찾기
-			findId.setVisible(true);
+			  findId.setVisible(true);
+	    	  loginView.setVisible(false);
 
 		} else if (obj == joinView.bt_checkid) {// 중복확인
 
 		} else if (obj == joinView.bt_reset) {// 취소
 
 		} else if (obj == joinView.bt_submit) {// 회원가입등록
+			  joinView.setVisible(true);
+	    	  String id = joinView.tf_id.getText();
+	    	  String pass = new String(joinView.tf_pass.getPassword());
+	    	  String name = joinView.tf_name.getText();
+	    	  String birth = joinView.cb_year.getSelectedItem().toString()
+	    			  +"-"+ joinView.cb_month.getSelectedItem().toString()
+	    			  +"-"+ joinView.cb_date.getSelectedItem().toString();
+	    	  String phone = joinView.tf_phone1.getText() 
+	    			  +"-"+ joinView.tf_phone2.getText()
+	    			  +"-"+ joinView.tf_phone3.getText();
+	    	  
+	    	  String email = "";
+	    	  String self = joinView.cb_email.getSelectedItem().toString();
+	    	  
+	    	  if(self.equals("직접입력")) {
+	    		  email = joinView.tf_email.getText();
+	    	  }else 
+	    		  email = joinView.tf_email.getText()
+	    		  + self;
+	    	  String gender = joinView.cb_gender.getSelectedItem().toString();
+	    	  
+	    	  
+	    	  memberVO vo = new memberVO(id, pass, name, birth, phone, email, gender);
+	    	  CoffeeDAO dao = new CoffeeDAO();
+	    	  if(dao.create(vo)) {
+	    		   joinView.showMSG("회원가입되었습니다"); 	 
+	    		   joinView.setVisible(false);
+	    		   loginView.setVisible(true);
+	    		  }else {
+	    			  joinView.showMSG("회원가입에 실패하였습니다.");
+	    			  joinView.setVisible(false);
+	    			  loginView.setVisible(true);
+	    		  }
+	    	  
+	    	  
+	    	  
 
 		} else if (obj == memberUp.bt_checkid) {// 회원정보수정(중복확인)
 

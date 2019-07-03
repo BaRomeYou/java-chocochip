@@ -8,7 +8,9 @@ public class productVO {
 	private int quantity;
 	
 	
-	
+	public productVO() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

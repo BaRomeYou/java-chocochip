@@ -95,26 +95,27 @@ public class CoffeeDAO {//회원 가입 로그인
 }
    public Boolean create(memberVO vo) { //회원가입  
       
-      connect();
-      
-   try {
-      String sql = "insert into member (id,no, name, pwd, birth, gender, phone, email) values(?,member_seq.nextval,?,?,?,?,?,?)";
-      stmt.executeUpdate();
-      stmt.setString(1,vo.getId());
-      stmt.setString(2,vo.getName());
-      stmt.setString(3,vo.getPwd());
-      stmt.setString(4,vo.getBirth());
-      stmt.setString(5,vo.getGender());
-      stmt.setString(6,vo.getPhone());
-      stmt.setString(7,vo.getMail());
-         return true;
-   }catch (SQLException e) {
-      e.printStackTrace();
-   }finally {
-      disconnect();
-   }
-      return false;
-         
+		connect();
+		
+		
+		try {
+			String sql = "insert into member (id,no, name, pwd, birth, gender, phone, email) values(?,member_seq.nextval,?,?,?,?,?,?)";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1,vo.getId());
+			stmt.setString(2,vo.getName());
+			stmt.setString(3,vo.getPwd());
+			stmt.setString(4,vo.getBirth());
+			stmt.setString(5,vo.getGender());
+			stmt.setString(6,vo.getPhone());
+			stmt.setString(7,vo.getMail());
+			stmt.executeUpdate();
+			return true;
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
+			return false;
    }
    
 

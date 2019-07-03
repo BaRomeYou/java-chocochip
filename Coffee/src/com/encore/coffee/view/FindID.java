@@ -39,7 +39,7 @@ public class FindID extends JFrame{
       bt_close.setBounds(452, 266, 75, 27);
       getContentPane().add(bt_close);
 
-      setVisible(true);
+      setVisible(false);
       setResizable(false);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
 
