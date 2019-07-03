@@ -385,7 +385,7 @@ public class Controller implements ActionListener, MouseListener {
 	            try {
 	               sec = (cal.get(Calendar.SECOND) < 10 ? "0" : "") + cal.get(Calendar.SECOND);
 
-	               sleep(700);
+	               sleep(700);// 
 	            } catch (InterruptedException e) {
 	               // TODO Auto-generated catch block
 	               e.printStackTrace();
