@@ -64,7 +64,7 @@ public class sell extends JFrame {
       scroll_table = new JScrollPane(table);
 
       Object[][] rowData2 = new Object[0][8];
-      String[] columTitle2 = { "번호", "이름", "아이디", "비밀번호", "생일", "성별", "전화번호", "메일" };
+      String[] columTitle2 = { "번호", "이름", "아이디", "비밀번호", "생일", "성별", "전화번호", "메일","사용횟수" };
       dtm2 = new DefaultTableModel(rowData2, columTitle2);
 
       table2 = new JTable(dtm2);
@@ -113,7 +113,7 @@ public class sell extends JFrame {
       comboBox.setBounds(131, 15, 105, 24);
       p2.add(comboBox);
 
-      String[] str2 = new String[] { "번호", "이름", "아이디", "비밀번호", "생일", "성별", "전화번호", "메일" };
+      String[] str2 = new String[] { "번호", "이름", "아이디", "비밀번호", "생일", "성별", "전화번호", "메일"};
 
       comboBox2 = new JComboBox(str2);
       comboBox2.setBounds(131, 15, 105, 24);
@@ -179,7 +179,7 @@ public class sell extends JFrame {
          memberVO vo = list.get(i);
 
       Object[] rowData = { vo.getNo(), vo.getName(), vo.getId(), vo.getPwd(), vo.getBirth(),
-               vo.getGender(), vo.getPhone(), vo.getMail()};
+               vo.getGender(), vo.getPhone(), vo.getMail(), vo.getFreq()};
       
          dtm2.addRow(rowData);
       }

@@ -56,7 +56,7 @@ public class Controller implements ActionListener, MouseListener {
 	FindID findId;
 	LookID lookId;
 	LookPass lookPass;
-
+	String item;
 	public Controller() {
 
 		joinView = new CoffeeJoin();
@@ -104,6 +104,7 @@ public class Controller implements ActionListener, MouseListener {
 		adminUp.btnNewButton_1.addActionListener(this);
 
 		// order
+		odr.btnNewButton_1.addActionListener(this);
 		odr.btnNewButton_2.addActionListener(this);
 		odr.btnNewButton_3.addActionListener(this);
 		odr.button.addActionListener(this);
@@ -717,8 +718,9 @@ public class Controller implements ActionListener, MouseListener {
 			odr.button_23.setEnabled(false); // 선택취소, 전체취소버튼 클릭시 true로 변경 , 우측하단의 spinner에 의해서만 selectNum조절
 
 		} else if (obj == odr.btnNewButton_1) {// 선택취소=
-
-			String item = (String) selecItem;
+			
+			
+			item = (String) selecItem;
 
 			int row = odr.table.getSelectedRow();
 			odr.buttonSet(item);
@@ -781,6 +783,7 @@ public class Controller implements ActionListener, MouseListener {
 			loginView.setVisible(true);
 
 		} else if (obj == sell.bt_mem) { // 검색버튼 클릭시
+			
 			Map<String, String> map = sell.memberSearch();
 
 			CoffeeDAO dao = new CoffeeDAO();

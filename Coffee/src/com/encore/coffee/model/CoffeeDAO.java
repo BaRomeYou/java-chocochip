@@ -232,11 +232,11 @@ public class CoffeeDAO {//회원 가입 로그인
    
    public ArrayList<memberVO> findSearch(Map<String, String> map){ //관리자 창 -> 회원정보 가져오기 (콤보박스 값별) 
       connect();
-      
+     
       ArrayList<memberVO> list = new ArrayList<memberVO>();
       memberVO vo = null; 
       try {
-      String sql = "select id, no, name, pwd, birth, gender, phone, email from member ";
+      String sql = "select id, no, name, pwd, birth, gender, phone, email, freq from member ";
       
       String title = map.get("title");
       String keyword = map.get("keyword");
@@ -273,6 +273,7 @@ public class CoffeeDAO {//회원 가입 로그인
             vo.setGender(rs.getString("gender"));
             vo.setPhone(rs.getString("phone"));
             vo.setMail(rs.getString("email"));
+            vo.setFreq(rs.getInt("freq"));
              list.add(vo);
          }
       } catch (SQLException e) {
