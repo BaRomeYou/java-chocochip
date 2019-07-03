@@ -36,8 +36,10 @@ public class order extends JFrame {
    public JSpinner spinner;
    public JTabbedPane tabbedPane;
    public JPanel panel_2;
-   
+   public String loginid; //로그인한 아이디 저장 
+   public boolean auth;
    public order() {
+	  
       setBackground(new Color(255, 255, 224));
       
       JPanel panel = new JPanel();
