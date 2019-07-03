@@ -324,4 +324,38 @@ public class CoffeeDAO {//회원 가입 로그인
       
    }
    
+   public ArrayList<memberVO> findAll() {
+		connect();
+		
+		ArrayList<memberVO> list = new ArrayList<memberVO>();
+		try {
+			String sql = "select id,no,name,birth,phone,email,gender,freq"+
+		                  "from member where id<>'admin'";
+			stmt = conn.prepareStatement(sql);// sql문 전송
+			rs = stmt.executeQuery();// sql문 실행요청(실행시점!!)			
+
+			while (rs.next()) {// 행얻기
+				// 열데이터 얻기
+				memberVO vo = new memberVO();
+				// 7개의 관련있는 속성데이터를 묶어주기 위해 사용.
+				vo.setId(rs.getString("id"));
+				vo.setNo(rs.getInt("no"));
+				vo.setName(rs.getString("name"));
+				vo.setBirth(rs.getString("birth"));
+				vo.setFreq(rs.getInt("freq"));
+				vo.setPhone(rs.getString("phone"));
+				vo.setMail(rs.getString("email"));
+				vo.setGender(rs.getString("gender"));
+
+				list.add(vo);
+			} // while
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return list;
+	}// findAll
+
+   
 }

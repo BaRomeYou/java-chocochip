@@ -1,5 +1,6 @@
 package com.encore.coffee.control;
 
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -28,6 +29,7 @@ import com.encore.coffee.view.FindID;
 import com.encore.coffee.view.LookID;
 import com.encore.coffee.view.LookPass;
 import com.encore.coffee.view.MemberUp;
+import com.encore.coffee.view.MyDrawing;
 import com.encore.coffee.view.coffeeloginView;
 import com.encore.coffee.view.order;
 import com.encore.coffee.view.sell;
@@ -46,6 +48,8 @@ public class Controller implements ActionListener, MouseListener {
 	// order
 	CashView csv;
 	CardView crdv;
+	MyDrawing md;
+
 	int listNum = 1; // order뷰에서 맨왼쪽에 위치한 번호
 	int selectNum = 1; // 갯수=0;
 	int orderMoney = 0;
@@ -68,6 +72,7 @@ public class Controller implements ActionListener, MouseListener {
 		odr = new order();
 		prdList = new HashMap<String, productVO>();
 		crdv = new CardView();
+		md = crdv.md;
 		csv = new CashView();
 		findId = new FindID();
 		lookId = new LookID();
@@ -328,8 +333,9 @@ public class Controller implements ActionListener, MouseListener {
 
 			}
 		}); // odr뷰에서 jspinner변경이벤트
+		
 		// cardView
-		csv.btn_cancel.addActionListener(this);
+		crdv.btn_cancel.addActionListener(this);
 		crdv.btn_confirm.addActionListener(this);
 
 		// cashView
@@ -397,8 +403,8 @@ public class Controller implements ActionListener, MouseListener {
 
 		Object obj = e.getSource();
 		if (obj == loginView.bt_join) {// 회원가입 버튼 클릭
-			  loginView.setVisible(false);
-	    	  joinView.setVisible(true);
+			loginView.setVisible(false);
+			joinView.setVisible(true);
 
 		} else if (obj == loginView.bt_login) {// 로그인 버튼 클릭
 			String id = loginView.tf_id.getText();
@@ -414,56 +420,72 @@ public class Controller implements ActionListener, MouseListener {
 			}
 
 		} else if (obj == loginView.bt_findID) {// 아이디, 비밀번호 찾기
-			  findId.setVisible(true);
-	    	  loginView.setVisible(false);
+			findId.setVisible(true);
+			loginView.setVisible(false);
 
 		} else if (obj == joinView.bt_checkid) {// 중복확인
 
 		} else if (obj == joinView.bt_reset) {// 취소
 
 		} else if (obj == joinView.bt_submit) {// 회원가입등록
-			  joinView.setVisible(true);
-	    	  String id = joinView.tf_id.getText();
-	    	  String pass = new String(joinView.tf_pass.getPassword());
-	    	  String name = joinView.tf_name.getText();
-	    	  String birth = joinView.cb_year.getSelectedItem().toString()
-	    			  +"-"+ joinView.cb_month.getSelectedItem().toString()
-	    			  +"-"+ joinView.cb_date.getSelectedItem().toString();
-	    	  String phone = joinView.tf_phone1.getText() 
-	    			  +"-"+ joinView.tf_phone2.getText()
-	    			  +"-"+ joinView.tf_phone3.getText();
-	    	  
-	    	  String email = "";
-	    	  String self = joinView.cb_email.getSelectedItem().toString();
-	    	  
-	    	  if(self.equals("직접입력")) {
-	    		  email = joinView.tf_email.getText();
-	    	  }else 
-	    		  email = joinView.tf_email.getText()
-	    		  + self;
-	    	  String gender = joinView.cb_gender.getSelectedItem().toString();
-	    	  
-	    	  
-	    	  memberVO vo = new memberVO(id, pass, name, birth, phone, email, gender);
-	    	  CoffeeDAO dao = new CoffeeDAO();
-	    	  if(dao.create(vo)) {
-	    		   joinView.showMSG("회원가입되었습니다"); 	 
-	    		   joinView.setVisible(false);
-	    		   loginView.setVisible(true);
-	    		  }else {
-	    			  joinView.showMSG("회원가입에 실패하였습니다.");
-	    			  joinView.setVisible(false);
-	    			  loginView.setVisible(true);
-	    		  }
-	    	  
-	    	  
-	    	  
+			joinView.setVisible(true);
+			String id = joinView.tf_id.getText();
+			String pass = new String(joinView.tf_pass.getPassword());
+			String name = joinView.tf_name.getText();
+			String birth = joinView.cb_year.getSelectedItem().toString() + "-"
+					+ joinView.cb_month.getSelectedItem().toString() + "-"
+					+ joinView.cb_date.getSelectedItem().toString();
+			String phone = joinView.tf_phone1.getText() + "-" + joinView.tf_phone2.getText() + "-"
+					+ joinView.tf_phone3.getText();
+
+			String email = "";
+			String self = joinView.cb_email.getSelectedItem().toString();
+
+			if (self.equals("직접입력")) {
+				email = joinView.tf_email.getText();
+			} else
+				email = joinView.tf_email.getText() + self;
+			String gender = joinView.cb_gender.getSelectedItem().toString();
+
+			memberVO vo = new memberVO(id, pass, name, birth, phone, email, gender);
+			CoffeeDAO dao = new CoffeeDAO();
+			if (dao.create(vo)) {
+				joinView.showMSG("회원가입되었습니다");
+				joinView.setVisible(false);
+				loginView.setVisible(true);
+			} else {
+				joinView.showMSG("회원가입에 실패하였습니다.");
+				joinView.setVisible(false);
+				loginView.setVisible(true);
+			}
 
 		} else if (obj == memberUp.bt_checkid) {// 회원정보수정(중복확인)
 
 		} else if (obj == memberUp.bt_reset) {// 회원정보수정(취소)
 
 		} else if (obj == memberUp.bt_submit) {// 회원정보수정(등록)
+			String phone = memberUp.tf_phone1.getText() + "-" + memberUp.tf_phone2.getText() + "-"
+					+ memberUp.tf_phone3.getText();
+			String birth = memberUp.cb_year.getSelectedItem().toString() + "-"
+					+ memberUp.cb_month.getSelectedItem().toString() + "-"
+					+ memberUp.cb_date.getSelectedItem().toString();
+
+              //수집된 정보를 한개의 변수명(vo)으로 정의
+			memberVO vo = new memberVO();
+			vo.setId(memberUp.tf_id.getText());
+			vo.setPwd(new String(memberUp.tf_pass.getPassword()));
+			vo.setPhone(phone);
+			vo.setMail(memberUp.tf_email.getText());
+			vo.setGender(memberUp.cb_gender.getSelectedItem().toString());
+			vo.setBirth(birth);
+
+			CoffeeDAO dao = new CoffeeDAO();
+			if (dao.member_up(vo)) {
+                 //DAO실행결과를 반영(뷰이동, 뷰의 내용을 변경)
+				// sell.displayTable(dao.findAll());//sell창은 회원에게 보여지지 않음
+				memberUp.setVisible(false);
+				loginView.setVisible(true);// 로그인하여 수정 정보 확인
+			}
 
 		} else if (obj == adminUp.btnNewButton) {// 수정(확인)
 
@@ -731,8 +753,13 @@ public class Controller implements ActionListener, MouseListener {
 			prdList.remove(item);
 
 		} else if (obj == crdv.btn_confirm) {
+		    crdv.frame.setVisible(true);
+			md.my.checkSign();
+		    crdv.frame.setVisible(false);
 
 		} else if (obj == crdv.btn_cancel) {
+			md.my.clearCanvas();
+			crdv.frame.setVisible(false);
 
 		} else if (obj == csv.btn_confirm) {// 현금결제 확인버튼
 
