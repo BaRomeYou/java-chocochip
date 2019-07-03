@@ -12,14 +12,10 @@ import javax.swing.JTextField;
 
 import com.encore.coffee.model.memberVO;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
 public class MemberUp extends JFrame {
    public JTextField tf_id, tf_name, tf_phone1, tf_phone2, tf_phone3, tf_email;
     public JPasswordField tf_pass, tf_pass2;
-    public JButton bt_submit, bt_reset;
+    public JButton bt_submit, bt_reset, bt_checkid;
     public JComboBox<String> cb_gender, cb_month, cb_email;
     JLabel [] label;
     public JComboBox<Object> cb_year, cb_date;
@@ -44,6 +40,7 @@ public class MemberUp extends JFrame {
         
         bt_submit = new JButton("등록");
         bt_reset = new JButton("취소");
+        bt_checkid = new JButton("중복확인");
         
         String []gender= {"여성","남성","기타"};
         String []month = {"1","2","3","4","5","6","7","8","9","10","11","12"};
@@ -96,7 +93,9 @@ public class MemberUp extends JFrame {
         
         bt_submit.setBounds(50,360,90,25);
         bt_reset.setBounds(150,360,90,25);
+        bt_checkid.setBounds(190,30,90,25);
 
+        
         setLayout(null);
         
         int y=30;
@@ -129,13 +128,13 @@ public class MemberUp extends JFrame {
         
         add(bt_submit);
         add(bt_reset);
-
+        add(bt_checkid);
+        
         setBounds(350,200,450,450);
-        setVisible(true);
+        setVisible(false);
    }// 생성자
 
    public void initText(memberVO vo) {
-<<<<<<< HEAD
 	      String pwd = vo.getPwd();
 	      //String phone = vo.getPhone();//"010-1234-5678"
 	      String []phone = vo.getPhone().split("-");// {"010","1234","5678"}
@@ -158,32 +157,9 @@ public class MemberUp extends JFrame {
 	       
 	   }//initText
    
-=======
-	   String pwd = vo.getPwd();
-	   //String phone = vo.getPhone();//"010-1234-5678"
-	   String []phone = vo.getPhone().split("-");// {"010","1234","5678"}
-	   String []birth = vo.getBirth().split("-");
-	   
-	   tf_id.setText(vo.getId());
-	   tf_pass.setText(pwd);
-	   tf_pass2.setText(pwd);
-	   tf_name.setText(vo.getName());
-	   cb_year.setSelectedItem(birth[0]);
-	   cb_month.setSelectedItem(birth[1]);
-	   cb_date.setSelectedItem(birth[1]);
-	
-	   tf_phone1.setText(phone[0]);
-	   tf_phone2.setText(phone[1]);
-	   tf_phone3.setText(phone[2]);
-	   tf_email.setText(vo.getMail());
-	   
-	   cb_gender.setSelectedItem(vo.getGender());
-	    
-   }//initText
->>>>>>> refs/remotes/origin/master
    
    public void showMsg(String msg) {
-	   JOptionPane.showMessageDialog(this, msg);
+         JOptionPane.showMessageDialog(this, msg);
    }//showMsg
    
 }// MemberUp

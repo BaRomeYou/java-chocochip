@@ -39,7 +39,6 @@ import com.encore.coffee.view.update;
 
 public class Controller implements ActionListener, MouseListener {
 
-<<<<<<< HEAD
 	   CoffeeJoin joinView;
 	   coffeeloginView loginView;
 	   MemberUp memberUp;
@@ -53,21 +52,6 @@ public class Controller implements ActionListener, MouseListener {
 	   int listNum = 1; // order뷰에서 맨왼쪽에 위치한 번호
 	   int selectNum = 1; // 갯수=0;
 	   int orderMoney = 0;
-=======
-	CoffeeJoin joinView;
-	coffeeloginView loginView;
-	MemberUp memberUp;
-	sell_g sell_g;
-	sell sell;
-	update adminUp;
-	public order odr;
-	// order
-	CashView csv;
-	CardView crdv;
-	MyDrawing md;
-	
-	ForUpdate upLogin;
->>>>>>> refs/remotes/origin/master
 
 	   public HashMap<String, productVO> prdList;// ★ import 패키지명 수정해야함★
 	   Object selecItem;
@@ -83,7 +67,6 @@ public class Controller implements ActionListener, MouseListener {
 	   
 	public Controller() {
 
-<<<<<<< HEAD
 	      joinView = new CoffeeJoin();
 	      loginView = new coffeeloginView();
 	      memberUp = new MemberUp();
@@ -102,24 +85,6 @@ public class Controller implements ActionListener, MouseListener {
 	      Pop pp=new Pop();
 	      pp.start();
 	      upLogin = new ForUpdate();
-=======
-		joinView = new CoffeeJoin();
-		loginView = new coffeeloginView();
-		memberUp = new MemberUp();
-		sell_g = new sell_g();
-		sell = new sell();
-		adminUp = new update();
-		odr = new order();
-		prdList = new HashMap<String, productVO>();
-		crdv = new CardView();
-		md = crdv.md;
-		csv = new CashView();
-		findId = new FindID();
-		lookId = new LookID();
-		lookPass = new LookPass();
-		
-		upLogin = new ForUpdate();
->>>>>>> refs/remotes/origin/master
 		eventUp();
 	}
 
@@ -134,22 +99,14 @@ public class Controller implements ActionListener, MouseListener {
 		loginView.bt_join.addActionListener(this);
 		loginView.bt_login.addActionListener(this);
 		loginView.bt_perInfo.addActionListener(this);
-<<<<<<< HEAD
 	
-=======
->>>>>>> refs/remotes/origin/master
 
 		// MemberUp();
+		memberUp.bt_checkid.addActionListener(this);
 		memberUp.bt_reset.addActionListener(this);
 		memberUp.bt_submit.addActionListener(this);
-<<<<<<< HEAD
 		upLogin.bt_login.addActionListener(this);
 		
-=======
-		
-		upLogin.bt_login.addActionListener(this);
-
->>>>>>> refs/remotes/origin/master
 		// sell_g
 
 		// sell
@@ -428,7 +385,7 @@ public class Controller implements ActionListener, MouseListener {
 	            try {
 	               sec = (cal.get(Calendar.SECOND) < 10 ? "0" : "") + cal.get(Calendar.SECOND);
 
-	               sleep(700);// 
+	               sleep(700);
 	            } catch (InterruptedException e) {
 	               // TODO Auto-generated catch block
 	               e.printStackTrace();
@@ -483,21 +440,6 @@ public class Controller implements ActionListener, MouseListener {
 		} else if (obj == loginView.bt_findID) {// 아이디, 비밀번호 찾기
 			findId.setVisible(true);
 			loginView.setVisible(false);
-		} else if (obj == loginView.bt_perInfo) {
-			loginView.setVisible(false);
-            upLogin.setVisible(true);			
-		}else if(obj == upLogin.bt_login) {	
-			String id = upLogin.tf_id.getText();//관리자 미인증시, 로그인 아이디			
-			   CoffeeDAO dao = new CoffeeDAO();
-			   memberVO vo = dao.findById(id);
-			   //------------------------------------------------
-			   if(vo == null){ //DB에  일치하는 아이디가 존재하지 않는다면
-			     memberUp.showMsg("존재하지 않는 아이디입니다!!");
-				   return; 
-			   } 
-			memberUp.initText(vo);
-			loginView.setVisible(false);
-			memberUp.setVisible(true);
 
 		} else if (obj == loginView.bt_perInfo) {
 	         loginView.setVisible(false);
@@ -601,19 +543,15 @@ public class Controller implements ActionListener, MouseListener {
 			
 			
 
+		} else if (obj == memberUp.bt_checkid) {// 회원정보수정(중복확인)
+
 		} else if (obj == memberUp.bt_reset) {// 회원정보수정(취소)
-<<<<<<< HEAD
 	         memberUp.setVisible(false);
 	            loginView.setVisible(true);  
-=======
-			memberUp.setVisible(false);
-            loginView.setVisible(true);			
->>>>>>> refs/remotes/origin/master
 
 		} else if (obj == memberUp.bt_submit) {// 회원정보수정(등록)
 			String phone = memberUp.tf_phone1.getText() + "-" + memberUp.tf_phone2.getText() + "-"
 					+ memberUp.tf_phone3.getText();
-			
 			String birth = memberUp.cb_year.getSelectedItem().toString() + "-"
 					+ memberUp.cb_month.getSelectedItem().toString() + "-"
 					+ memberUp.cb_date.getSelectedItem().toString();
@@ -626,15 +564,14 @@ public class Controller implements ActionListener, MouseListener {
 			vo.setMail(memberUp.tf_email.getText());
 			vo.setGender(memberUp.cb_gender.getSelectedItem().toString());
 			vo.setBirth(birth);
-			
 
 			CoffeeDAO dao = new CoffeeDAO();
 			if (dao.member_up(vo)) {
                  //DAO실행결과를 반영(뷰이동, 뷰의 내용을 변경)
-				sell.displayTable(dao.findAll());//sell창은 회원에게 보여지지 않음
-			}			
-			memberUp.setVisible(false);
-			loginView.setVisible(true);//재로그인후 오더뷰로 이동
+				// sell.displayTable(dao.findAll());//sell창은 회원에게 보여지지 않음
+				memberUp.setVisible(false);
+				loginView.setVisible(true);// 로그인하여 수정 정보 확인
+			}
 
 		} else if (obj == adminUp.btnNewButton) {// 수정(확인)
 
