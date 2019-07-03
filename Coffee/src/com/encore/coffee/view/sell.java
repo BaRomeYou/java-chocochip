@@ -159,11 +159,11 @@ public class sell extends JFrame {
       String keyword = "";
       String title = comboBox.getSelectedItem().toString();
       if(title.equals("目乔")) {
-         keyword = "1"; 
+         keyword = "c"; 
       }else if (title.equals("澜丰")) {
-         keyword = "2";
+         keyword = "b";
       }else if (title.equals("海捞目府")) {
-         keyword = "3";
+         keyword = "s";
       }
       
       Map<String, String> map = new HashMap<String, String>();

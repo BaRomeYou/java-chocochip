@@ -26,6 +26,7 @@ import com.encore.coffee.view.CardView;
 import com.encore.coffee.view.CashView;
 import com.encore.coffee.view.CoffeeJoin;
 import com.encore.coffee.view.FindID;
+import com.encore.coffee.view.ForUpdate;
 import com.encore.coffee.view.LookID;
 import com.encore.coffee.view.LookPass;
 import com.encore.coffee.view.MemberUp;
@@ -38,45 +39,52 @@ import com.encore.coffee.view.update;
 
 public class Controller implements ActionListener, MouseListener {
 
-	CoffeeJoin joinView;
-	coffeeloginView loginView;
-	MemberUp memberUp;
-	sell_g sell_g;
-	sell sell;
-	update adminUp;
-	public order odr;
-	// order
-	CashView csv;
-	CardView crdv;
-	MyDrawing md;
+	   CoffeeJoin joinView;
+	   coffeeloginView loginView;
+	   MemberUp memberUp;
+	   sell_g sell_g;
+	   sell sell;
+	   update adminUp;
+	   public order odr;
+	   // order
+	   CashView csv;
+	   CardView crdv;
+	   int listNum = 1; // order뷰에서 맨왼쪽에 위치한 번호
+	   int selectNum = 1; // 갯수=0;
+	   int orderMoney = 0;
 
-	int listNum = 1; // order뷰에서 맨왼쪽에 위치한 번호
-	int selectNum = 1; // 갯수=0;
-	int orderMoney = 0;
+	   public HashMap<String, productVO> prdList;// ★ import 패키지명 수정해야함★
+	   Object selecItem;
 
-	public HashMap<String, productVO> prdList;// ★ import 패키지명 수정해야함★
-	Object selecItem;
-
-	FindID findId;
-	LookID lookId;
-	LookPass lookPass;
-	String item;
+	   FindID findId;
+	   LookID lookId;
+	   LookPass lookPass;
+	   private String item, item2;
+	   CoffeeDAO dao;
+	   MyDrawing md;
+	
+	   ForUpdate upLogin;
+	   
 	public Controller() {
 
-		joinView = new CoffeeJoin();
-		loginView = new coffeeloginView();
-		memberUp = new MemberUp();
-		sell_g = new sell_g();
-		sell = new sell();
-		adminUp = new update();
-		odr = new order();
-		prdList = new HashMap<String, productVO>();
-		crdv = new CardView();
-		md = crdv.md;
-		csv = new CashView();
-		findId = new FindID();
-		lookId = new LookID();
-		lookPass = new LookPass();
+	      joinView = new CoffeeJoin();
+	      loginView = new coffeeloginView();
+	      memberUp = new MemberUp();
+	      sell_g = new sell_g();
+	      sell = new sell();
+	      adminUp = new update();
+	      odr = new order();
+	      prdList = new HashMap<String, productVO>();
+	      crdv = new CardView();
+	      csv = new CashView();
+	      findId = new FindID();
+	      lookId = new LookID();
+	      lookPass = new LookPass();
+	      dao=new CoffeeDAO();
+	      md = crdv.md;
+	      Pop pp=new Pop();
+	      pp.start();
+	      upLogin = new ForUpdate();
 		eventUp();
 	}
 
@@ -90,12 +98,15 @@ public class Controller implements ActionListener, MouseListener {
 		loginView.bt_findID.addActionListener(this);
 		loginView.bt_join.addActionListener(this);
 		loginView.bt_login.addActionListener(this);
+		loginView.bt_perInfo.addActionListener(this);
+	
 
 		// MemberUp();
 		memberUp.bt_checkid.addActionListener(this);
 		memberUp.bt_reset.addActionListener(this);
 		memberUp.bt_submit.addActionListener(this);
-
+		upLogin.bt_login.addActionListener(this);
+		
 		// sell_g
 
 		// sell
@@ -129,6 +140,7 @@ public class Controller implements ActionListener, MouseListener {
 		odr.button_21.addActionListener(this);
 		odr.button_22.addActionListener(this);
 		odr.button_23.addActionListener(this);
+		odr.button_24.addActionListener(this);
 		odr.button_3.addActionListener(this);
 		odr.button_4.addActionListener(this);
 		odr.button_5.addActionListener(this);
@@ -335,6 +347,8 @@ public class Controller implements ActionListener, MouseListener {
 			}
 		}); // odr뷰에서 jspinner변경이벤트
 		
+	
+
 		// cardView
 		crdv.btn_cancel.addActionListener(this);
 		crdv.btn_confirm.addActionListener(this);
@@ -359,45 +373,45 @@ public class Controller implements ActionListener, MouseListener {
 
 	// 로그인 버튼눌러서 회원정보가 확인되어서 order뷰가 뜰때 pop창에 생성되야할 클래스
 	class Pop extends Thread {
-		public void run() {
-			int num = 1;
-			int P = 0;
-			Calendar cal = Calendar.getInstance();
-			String sec = null;
-			String[] picture = { "event1", "event2", "event3" };
+	      public void run() {
+	         int num = 1;
+	         int P = 0;
+	         Calendar cal = Calendar.getInstance();
+	         String sec = null;
+	         String[] picture = { "event1", "event2", "event3" };
 
-			while (true) {
+	         while (true) {
 
-				try {
-					sec = (cal.get(Calendar.SECOND) < 10 ? "0" : "") + cal.get(Calendar.SECOND);
+	            try {
+	               sec = (cal.get(Calendar.SECOND) < 10 ? "0" : "") + cal.get(Calendar.SECOND);
 
-					sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				num++;
+	               sleep(700);
+	            } catch (InterruptedException e) {
+	               // TODO Auto-generated catch block
+	               e.printStackTrace();
+	            }
+	            num++;
 
-				if (num % 5 == 0) {
-					if (P < 5) {
-						P++;
+	            if (num % 5 == 0) {
+	               if (P < 3) {
+	                  P++;
 
-						if (P == 5) {
-							P = 0;
+	                  if (P == 3) {
+	                     P = 0;
 
-						}
+	                  }
 
-						odr.lblNewLabel_1
-								.setIcon(new ImageIcon(order.class.getResource("../images/" + picture[P] + ".jpg")));
-					}
+	                  
+	                  odr.lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\"+picture[P]+".jpg"));
+	               }
 
-				}
+	            }
 
-			}
+	         }
 
-		}
+	      }
 
-	}
+	   }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -410,9 +424,12 @@ public class Controller implements ActionListener, MouseListener {
 		} else if (obj == loginView.bt_login) {// 로그인 버튼 클릭
 			String id = loginView.tf_id.getText();
 			String pass = new String(loginView.tf_pass.getPassword());
-
 			CoffeeDAO dao = new CoffeeDAO();
-			if (dao.findLogin(id, pass)) {
+			if(id.equals("") || pass.equals("")) {
+				JOptionPane.showMessageDialog(loginView, "아이디 또는 비밀번호를 입력하세요");
+				loginView.tf_id.requestFocus();
+				return;
+			}else if (dao.findLogin(id, pass)) {
 				odr.setVisible(true);
 				loginView.setVisible(false);
 				loginView.initText();
@@ -424,14 +441,49 @@ public class Controller implements ActionListener, MouseListener {
 			findId.setVisible(true);
 			loginView.setVisible(false);
 
-		} else if (obj == joinView.bt_checkid) {// 중복확인
+		} else if (obj == loginView.bt_perInfo) {
+	         loginView.setVisible(false);
+	            upLogin.setVisible(true);         
+	      }else if(obj == upLogin.bt_login) {   
+	         String id = upLogin.tf_id.getText();//관리자 미인증시, 로그인 아이디         
+	            CoffeeDAO dao = new CoffeeDAO();
+	            memberVO vo = dao.findById(id);
+	            //------------------------------------------------
+	            if(vo == null){ //DB에  일치하는 아이디가 존재하지 않는다면
+	              memberUp.showMsg("존재하지 않는 아이디입니다!!");
+	               return; 
+	            } 
+	         memberUp.initText(vo);
+	         loginView.setVisible(false);
+	         memberUp.setVisible(true);
+		
+		
+	      }
+		
+		else if (obj == joinView.bt_checkid) {// 중복확인
+			String id=joinView.tf_id.getText();
+			CoffeeDAO dao = new CoffeeDAO();
+			
+			if(dao.check_id(id)==1) {
+				JOptionPane.showMessageDialog(joinView, "아이디가 존재합니다");
+			}else 
+				JOptionPane.showMessageDialog(joinView, "사용가능한 아이디입니다");
 
 		} else if (obj == joinView.bt_reset) {// 취소
+			joinView.setVisible(false);
+			loginView.setVisible(true);
 
 		} else if (obj == joinView.bt_submit) {// 회원가입등록
+			
+				
+					
+			
+			
+			
 			joinView.setVisible(true);
 			String id = joinView.tf_id.getText();
 			String pass = new String(joinView.tf_pass.getPassword());
+			String pass2 = new String (joinView.tf_pass2.getPassword());
 			String name = joinView.tf_name.getText();
 			String birth = joinView.cb_year.getSelectedItem().toString() + "-"
 					+ joinView.cb_month.getSelectedItem().toString() + "-"
@@ -447,6 +499,35 @@ public class Controller implements ActionListener, MouseListener {
 			} else
 				email = joinView.tf_email.getText() + self;
 			String gender = joinView.cb_gender.getSelectedItem().toString();
+			
+			//유효성 검사 
+			if(id.equals("") || pass.equals("") ||  name.equals("") || email.equals("")) {
+				JOptionPane.showMessageDialog(joinView, "빈 칸을 입력해주세요");
+				return;
+			}else if (id.length()<4 || id.length()>11) {
+				JOptionPane.showMessageDialog(joinView, "ID는 4~10자리의 숫자로 입력해주세요");
+				joinView.tf_id.requestFocus();
+				return;
+			}else if (pass.length()<4 || pass.length()>12) {
+				JOptionPane.showMessageDialog(joinView,	"비밀번호는 5~11자리로 작성해주세요");
+				joinView.tf_pass.requestFocus();
+				return;
+			}else if (!pass.equals(pass2)) {
+				JOptionPane.showMessageDialog(joinView, "비밀번호를 확인하여주십시오");
+				joinView.tf_pass2.requestFocus();
+				joinView.tf_pass2.setText("");
+				return;
+				
+			}else if (id.equals(pass)) {
+				JOptionPane.showMessageDialog(joinView, "아이디와 비밀번호는 동일할 수 없습니다");
+				joinView.tf_pass.setText("");
+				joinView.tf_pass.requestFocus();
+				return;
+			}else if (phone.length()<9 || phone.length()>12) {
+				JOptionPane.showMessageDialog(joinView, "전화번호를 확인해주세요");
+				joinView.tf_phone1.requestFocus();
+				return;
+			}
 
 			memberVO vo = new memberVO(id, pass, name, birth, phone, email, gender);
 			CoffeeDAO dao = new CoffeeDAO();
@@ -459,10 +540,14 @@ public class Controller implements ActionListener, MouseListener {
 				joinView.setVisible(false);
 				loginView.setVisible(true);
 			}
+			
+			
 
 		} else if (obj == memberUp.bt_checkid) {// 회원정보수정(중복확인)
 
 		} else if (obj == memberUp.bt_reset) {// 회원정보수정(취소)
+	         memberUp.setVisible(false);
+	            loginView.setVisible(true);  
 
 		} else if (obj == memberUp.bt_submit) {// 회원정보수정(등록)
 			String phone = memberUp.tf_phone1.getText() + "-" + memberUp.tf_phone2.getText() + "-"
@@ -503,13 +588,13 @@ public class Controller implements ActionListener, MouseListener {
 
 		} else if (obj == odr.button) {
 			prdList.put("Americano", new productVO(listNum + "", "Americano", 2500, selectNum));// set
-			// odr에 있는 jtable에 클릭한 버튼에 맞는값 출력하기
-			odr.displayTable(prdList.get("Americano"));
-			csv.displayTable(prdList.get("Americano"));
-			crdv.displayTable(prdList.get("Americano"));
+	         // odr에 있는 jtable에 클릭한 버튼에 맞는값 출력하기
+	         odr.displayTable(prdList.get("Americano"));
+	         csv.displayTable(prdList.get("Americano"));
+	         crdv.displayTable(prdList.get("Americano"));
 
-			listNum++;
-			odr.button.setEnabled(false); // 선택취소, 전체취소버튼 클릭시 true로 변경 , 우측하단의 spinner에 의해서만 selectNum조절
+	         listNum++;
+	         odr.button.setEnabled(false); // 선택취소, 전체취소버튼 클릭시 true로 변경 , 우측하단의 spinner에 의해서만 selectNum조절
 
 		} else if (obj == odr.button_1) {
 			prdList.put("Espresso", new productVO(listNum + "", "Espresso", 2000, selectNum));// set
@@ -522,14 +607,14 @@ public class Controller implements ActionListener, MouseListener {
 			odr.button_1.setEnabled(false); // 선택취소, 전체취소버튼 클릭시 true로 변경 , 우측하단의 spinner에 의해서만 selectNum조절
 
 		} else if (obj == odr.button_2) {
-			prdList.put("Cramel", new productVO(listNum + "", "Espresso", 3500, selectNum));// set
+			prdList.put("Cramel", new productVO(listNum + "", "Cramel", 3500, selectNum));// set
 
-			listNum++;
-			// odr에 있는 jtable에 클릭한 버튼에 맞는값 출력하기
-			odr.displayTable(prdList.get("Cramel"));
-			csv.displayTable(prdList.get("Cramel"));
-			crdv.displayTable(prdList.get("Cramel"));
-			odr.button_2.setEnabled(false); // 선택취소, 전체취소버튼 클릭시 true로 변경 , 우측하단의 spinner에 의해서만 selectNum조절
+	         listNum++;
+	         // odr에 있는 jtable에 클릭한 버튼에 맞는값 출력하기
+	         odr.displayTable(prdList.get("Cramel"));
+	         csv.displayTable(prdList.get("Cramel"));
+	         crdv.displayTable(prdList.get("Cramel"));
+	         odr.button_2.setEnabled(false); // 선택취소, 전체취소버튼 클릭시 true로 변경 , 우측하단의 spinner에 의해서만 selectNum조절
 		} else if (obj == odr.button_3) {
 
 			prdList.put("Capuccino", new productVO(listNum + "", "Capuccino", 3500, selectNum));// set
@@ -680,16 +765,22 @@ public class Controller implements ActionListener, MouseListener {
 			crdv.displayTable(prdList.get("Crape"));
 			odr.button_17.setEnabled(false); // 선택취소, 전체취소버튼 클릭시 true로 변경 , 우측하단의 spinner에 의해서만 selectNum조절
 
-		} else if (obj == odr.button_18) {
-			String delName;
-
-			DefaultTableModel model = (DefaultTableModel) odr.table.getModel();
-			model.setNumRows(0);
-
-			prdList.clear();
-
-			// System.out.println(prdList.get("Americano"));
-			System.out.println(prdList.keySet());
+		} else if (obj == odr.button_18) { //전체취소
+		      DefaultTableModel model = (DefaultTableModel) odr.table.getModel();
+		         model.setNumRows(0);
+		         
+		    
+		         
+		         
+		         crdv.dtm.setNumRows(0);
+		         csv.dtm.setNumRows(0);
+		         
+		         prdList.clear();
+		         
+		         odr.buttonSet(item2,2);
+		         
+		         // System.out.println(prdList.get("Americano"));
+		         System.out.println(prdList.keySet());
 
 		} else if (obj == odr.button_19) {
 			csv.frame.setVisible(true);
@@ -742,17 +833,18 @@ public class Controller implements ActionListener, MouseListener {
 		} else if (obj == odr.btnNewButton_1) {// 선택취소=
 			
 			
-			item = (String) selecItem;
-
+			item2 = (String) selecItem;
+			odr.buttonSet(item2,1);
 			int row = odr.table.getSelectedRow();
-			odr.buttonSet(item);
-
+			
 			if (odr.table.getSelectedRow() != -1) {
 				odr.model.removeRow(odr.table.getSelectedRow());
 
 			}
 
 			prdList.remove(item);
+			
+
 
 		} else if (obj == crdv.btn_confirm) {
 		    crdv.frame.setVisible(true);
@@ -766,6 +858,12 @@ public class Controller implements ActionListener, MouseListener {
 		} else if (obj == csv.btn_confirm) {// 현금결제 확인버튼
 
 		} else if (obj == csv.btn_cancel) {// 현금결제 취소버튼
+			 DefaultTableModel model = (DefaultTableModel) csv.table.getModel();
+	         model.setNumRows(0);
+	         
+	         
+	         csv.frame.setVisible(false);
+	         odr.setVisible(true);
 
 		} else if (obj == findId.bt_findID) {// 아이디비밀번호 찾기(아이디버튼)
 			findId.setVisible(false);
@@ -774,8 +872,11 @@ public class Controller implements ActionListener, MouseListener {
 		} else if (obj == findId.bt_findPass) {// 아이디비밀번호 찾기(비밀번호버튼)
 			findId.setVisible(false);
 			lookPass.setVisible(true);
+			
 
 		} else if (obj == findId.bt_close) {// 아이디비밀번호 찾기(닫기)
+			findId.setVisible(false);
+			loginView.setVisible(true);
 
 		} else if (obj == lookId.bt_find) {// 아이디로 찾기(찾기버튼)
 			String email = lookId.tf_email.getText();
@@ -823,7 +924,22 @@ public class Controller implements ActionListener, MouseListener {
 			CoffeeDAO dao = new CoffeeDAO();
 			ArrayList<productVO> list = dao.findProductSearch(map);
 			sell.displayProductTable(list);
-		}
+		}else if(obj==odr.button_24) { //관리자 로그인 버튼
+	         
+	         String ckId=loginView.tf_id.getText();
+	         String pwd=loginView.tf_pass.getPassword().toString();
+	         
+	         if(ckId.equals("admin") && pwd.equals("1234")) {
+	            sell.setVisible(true);
+	            
+	         }else
+	            JOptionPane.showMessageDialog(odr, "아이디나 비밀번호를 확인하시오");
+		}else if(obj==odr.btnNewButton_3) {
+	         dao.disconnect();
+	         JOptionPane.showMessageDialog(odr, "로그아웃 되었습니다");
+	         odr.setVisible(false);
+	         loginView.setVisible(true);
+	      }
 
 	}
 

@@ -42,7 +42,7 @@ public class MyDrawing extends JPanel {
     
     public MyDrawing(){
      //super("::MyDrawing::");
-     System.out.println("MyDrawing持失切");
+    // System.out.println("MyDrawing持失切");
        
      p1=new JPanel(); add(p1, "North");
      p2=new JPanel(){ // 食拷爽奄
@@ -84,7 +84,7 @@ public class MyDrawing extends JPanel {
       ArrayList<Point> list = new ArrayList();
 
       public MyHandler() {
-         System.out.println("MyHandler持失切");
+         //System.out.println("MyHandler持失切");
       }
       
       

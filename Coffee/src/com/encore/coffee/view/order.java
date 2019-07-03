@@ -21,6 +21,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 import com.encore.coffee.model.productVO;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class order extends JFrame {
    public JTextField txtJava;
@@ -28,11 +30,12 @@ public class order extends JFrame {
    
    public JButton button,button_1,button_2,button_3,button_4,button_5,button_6,button_7,button_8,button_9,button_10,button_11;
    public JButton button_12,button_13,button_14,button_15,button_16,button_17,btnNewButton,btnNewButton_1;
-   public JButton btnNewButton_2,button_21,button_22,button_23,btnNewButton_3,button_18,button_19,button_20;
+   public JButton btnNewButton_2,button_21,button_22,button_23,btnNewButton_3,button_18,button_19,button_20,button_24;
    public JLabel lblNewLabel_1,lblNewLabel;
    public JTable table;
    public JSpinner spinner;
-   
+   public JTabbedPane tabbedPane;
+   public JPanel panel_2;
    
    public order() {
       setBackground(new Color(255, 255, 224));
@@ -50,7 +53,7 @@ public class order extends JFrame {
       panel_1.setLayout(null);
       
        btnNewButton = new JButton("New button");
-      String imgPath0="C:\\Users\\Playdata\\Desktop\\images\\logo2.png";
+      String imgPath0="C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\logo2.png";
       ImageIcon icon0 = new ImageIcon(imgPath0);  
       
       Image img0=icon0.getImage();
@@ -78,6 +81,7 @@ public class order extends JFrame {
       txtJava.setColumns(10);
       
        btnNewButton_3 = new JButton("\uB85C\uADF8\uC544\uC6C3");
+       
       btnNewButton_3.setForeground(new Color(255, 0, 0));
       
       
@@ -86,6 +90,15 @@ public class order extends JFrame {
       btnNewButton_3.setBorder(new LineBorder(new Color(0, 0, 0)));
       btnNewButton_3.setBounds(333, 0, 105, 17);
       panel_1.add(btnNewButton_3);
+      
+       button_24 = new JButton("\uAD00\uB9AC\uC790\uB85C\uADF8\uC778");
+     
+      button_24.setForeground(Color.RED);
+      button_24.setFont(new Font("한컴 고딕", Font.BOLD, 12));
+      button_24.setBorder(new LineBorder(new Color(0, 0, 0)));
+      button_24.setBackground(new Color(255, 255, 224));
+      button_24.setBounds(227, 0, 105, 17);
+      panel_1.add(button_24);
       
       
       
@@ -125,17 +138,17 @@ public class order extends JFrame {
       panel_4.add(panel_8);
       panel_8.setLayout(null);
       
-      JLabel lblNewLabel_1 = new JLabel("");
-      lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\event1.jpg"));
+       lblNewLabel_1 = new JLabel("");
+      lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\event1.jpg"));
       lblNewLabel_1.setBounds(0, 0, 452, 35);
       panel_8.add(lblNewLabel_1);
       
-      JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+       tabbedPane = new JTabbedPane(JTabbedPane.TOP);
       tabbedPane.setBackground(new Color(255, 255, 224));
       tabbedPane.setBounds(0, 81, 452, 335);
       panel.add(tabbedPane);
       
-      JPanel panel_2 = new JPanel();
+       panel_2 = new JPanel();
       panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
       panel_2.setBackground(new Color(255, 255, 224));
       tabbedPane.addTab("커피메뉴", null, panel_2, null);
@@ -154,7 +167,7 @@ public class order extends JFrame {
       
       
       
-      String imgPath="C:\\Users\\Playdata\\Desktop\\images\\Americano.jpg";
+      String imgPath="C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\Americano.jpg";
       ImageIcon icon1 = new ImageIcon(imgPath);  
       
       Image img1=icon1.getImage();
@@ -173,7 +186,7 @@ public class order extends JFrame {
       button_2.setBackground(new Color(255, 255, 224));
       button_2.setBorder(new BevelBorder(BevelBorder.RAISED));
       
-      String imgPath2="C:\\Users\\Playdata\\Desktop\\images\\Caramel.jpg";
+      String imgPath2="C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\Caramel.jpg";
       ImageIcon icon2 = new ImageIcon(imgPath2); 
       Image img2=icon2.getImage();
       Image chainimg2=img2.getScaledInstance(170, 120, Image.SCALE_SMOOTH);
@@ -187,7 +200,7 @@ public class order extends JFrame {
       button_3.setBorder(new BevelBorder(BevelBorder.RAISED));
       
       
-      String imgPath3="C:\\Users\\Playdata\\Desktop\\images\\Capucino.jpg";
+      String imgPath3="C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\Capucino.jpg";
       ImageIcon icon3 = new ImageIcon(imgPath3); 
       Image img3=icon3.getImage();
       Image chainimg3=img3.getScaledInstance(170, 120, Image.SCALE_SMOOTH);
@@ -201,7 +214,7 @@ public class order extends JFrame {
       button_4.setBorder(new BevelBorder(BevelBorder.RAISED));
       
       
-      button_4.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\Latte.jpg"));
+      button_4.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\Latte.jpg"));
       button_4.setBounds(300, 0, 142, 125);
       panel_2.add(button_4);
       
@@ -210,7 +223,7 @@ public class order extends JFrame {
       button_5.setBorder(new BevelBorder(BevelBorder.RAISED));
       
       
-      button_5.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\Dolchae.jpg"));
+      button_5.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\Dolchae.jpg"));
       button_5.setBounds(300, 126, 142, 125);
       panel_2.add(button_5);
       
@@ -219,7 +232,7 @@ public class order extends JFrame {
       button_1.setBorder(new BevelBorder(BevelBorder.RAISED));
       
       
-      String imgPath6="C:\\Users\\Playdata\\Desktop\\images\\Esprresso.jpg";
+      String imgPath6="C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\Esprresso.jpg";
       ImageIcon icon6 = new ImageIcon(imgPath6); 
       Image img6=icon6.getImage();
       Image chainimg6=img6.getScaledInstance(170, 120, Image.SCALE_SMOOTH);
@@ -278,7 +291,7 @@ public class order extends JFrame {
       
        button_6 = new JButton("New button");
       button_6.setBorder(new BevelBorder(BevelBorder.RAISED));
-      String imgPath7="C:\\Users\\Playdata\\Desktop\\images\\BlackTea.jpg";
+      String imgPath7="C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\BlackTea.jpg";
       ImageIcon icon7 = new ImageIcon(imgPath7); 
       Image img7=icon7.getImage();
       Image chainimg7=img7.getScaledInstance(170, 120, Image.SCALE_SMOOTH);
@@ -291,7 +304,7 @@ public class order extends JFrame {
       
        button_7 = new JButton("New button");
       button_7.setBorder(new BevelBorder(BevelBorder.RAISED));
-      String imgPath10="C:\\Users\\Playdata\\Desktop\\images\\GreenTea.jpg";
+      String imgPath10="C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\GreenTea.jpg";
       ImageIcon icon10 = new ImageIcon(imgPath10); 
       Image img10=icon10.getImage();
       Image chainimg10=img10.getScaledInstance(170, 120, Image.SCALE_SMOOTH);
@@ -304,7 +317,7 @@ public class order extends JFrame {
        button_8 = new JButton("New button");
       button_8.setBorder(new BevelBorder(BevelBorder.RAISED));
       
-      String imgPath8="C:\\Users\\Playdata\\Desktop\\images\\coollime.jpg";
+      String imgPath8="C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\coollime.jpg";
       ImageIcon icon8 = new ImageIcon(imgPath8); 
       Image img8=icon8.getImage();
       Image chainimg8=img8.getScaledInstance(170, 120, Image.SCALE_SMOOTH);
@@ -315,7 +328,7 @@ public class order extends JFrame {
       
        button_9 = new JButton("New button");
       button_9.setBorder(new BevelBorder(BevelBorder.RAISED));
-      String imgPath11="C:\\Users\\Playdata\\Desktop\\images\\Vanila.jpg";
+      String imgPath11="C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\Vanila.jpg";
       ImageIcon icon11 = new ImageIcon(imgPath11); 
       Image img11=icon11.getImage();
       Image chainimg11=img11.getScaledInstance(170, 120, Image.SCALE_SMOOTH);
@@ -330,7 +343,7 @@ public class order extends JFrame {
       button_10.setBorder(new BevelBorder(BevelBorder.RAISED));
       
       
-      String imgPath9="C:\\Users\\Playdata\\Desktop\\images\\PinkJamong.jpg";
+      String imgPath9="C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\PinkJamong.jpg";
       ImageIcon icon9 = new ImageIcon(imgPath9); 
       Image img9=icon9.getImage();
       Image chainimg9=img9.getScaledInstance(170, 120, Image.SCALE_SMOOTH);
@@ -344,7 +357,7 @@ public class order extends JFrame {
        button_11 = new JButton("New button");
       button_11.setBorder(new BevelBorder(BevelBorder.RAISED));
       
-      button_11.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\Javachip.jpg"));
+      button_11.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\Javachip.jpg"));
       button_11.setBounds(300, 126, 142, 125);
       panel_5.add(button_11);
       
@@ -399,33 +412,34 @@ public class order extends JFrame {
       
       button_12.setBorder(new BevelBorder(BevelBorder.RAISED));
       
-      button_12.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\blueberry.jpg"));
+      button_12.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\blueberry.jpg"));
       button_12.setBounds(0, 0, 155, 125);
       panel_6.add(button_12);
       
        button_13 = new JButton("New button");
       button_13.setBorder(new BevelBorder(BevelBorder.RAISED));
       
-      button_13.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\banana.jpg"));
+      button_13.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\banana.jpg"));
       button_13.setBounds(0, 126, 155, 125);
       panel_6.add(button_13);
       
        button_14 = new JButton("New button");
       
-      button_14.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\choco.jpg"));
+      button_14.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\choco.jpg"));
+      
       button_14.setBounds(155, 0, 142, 125);
       panel_6.add(button_14);
       
       button_15 = new JButton("New button");
       button_15.setBorder(new BevelBorder(BevelBorder.RAISED));
       
-      button_15.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\redvelvet.jpg"));
+      button_15.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\redvelvet.jpg"));
       button_15.setBounds(155, 126, 142, 125);
       panel_6.add(button_15);
       
        button_16 = new JButton("New button");
       button_16.setBorder(new BevelBorder(BevelBorder.RAISED));
-      String imgPath16="C:\\Users\\Playdata\\Desktop\\images\\green.jpg";
+      String imgPath16="C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\green.jpg";
       ImageIcon icon16 = new ImageIcon(imgPath16); 
       Image img16=icon16.getImage();
       Image chainimg16=img16.getScaledInstance(170, 120, Image.SCALE_SMOOTH);
@@ -441,7 +455,7 @@ public class order extends JFrame {
        button_17 = new JButton("New button");
       button_17.setBorder(new BevelBorder(BevelBorder.RAISED));
       
-      button_17.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\strawgreen.jpg"));
+      button_17.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\strawgreen.jpg"));
       button_17.setBounds(300, 126, 142, 125);
       panel_6.add(button_17);
       
@@ -494,25 +508,25 @@ public class order extends JFrame {
       
       btnNewButton_2 = new JButton("New button");
       btnNewButton_2.setBorder(new BevelBorder(BevelBorder.RAISED));
-      btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\drizzle.jpg"));
+      btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\drizzle.jpg"));
       btnNewButton_2.setBounds(14, 0, 205, 119);
       panel_7.add(btnNewButton_2);
       
       button_21 = new JButton("New button");
       button_21.setBorder(new BevelBorder(BevelBorder.RAISED));
-      button_21.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\java.jpg"));
+      button_21.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\java.jpg"));
       button_21.setBounds(14, 131, 205, 119);
       panel_7.add(button_21);
       
        button_22 = new JButton("New button");
       button_22.setBorder(new BevelBorder(BevelBorder.RAISED));
-      button_22.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\hazzel.jpg"));
+      button_22.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\hazzel.jpg"));
       button_22.setBounds(242, 0, 205, 119);
       panel_7.add(button_22);
       
        button_23 = new JButton("New button");
       button_23.setBorder(new BevelBorder(BevelBorder.RAISED));
-      button_23.setIcon(new ImageIcon("C:\\Users\\Playdata\\Desktop\\images\\ping.jpg"));
+      button_23.setIcon(new ImageIcon("C:\\Users\\Playdata\\git\\java-chocochip\\Coffee\\src\\images\\ping.jpg"));
       button_23.setBounds(242, 131, 205, 119);
       panel_7.add(button_23);
       
@@ -610,17 +624,17 @@ public class order extends JFrame {
       
    }
    
-   public void buttonSet(String obj) { // 취소나 전체취소 버튼누를시 버튼을 다시클릭할수있게한다.
-       if(obj.equals("Americano")) {
-            
-         
+   public void buttonSet(String obj, int a) { // 취소나 전체취소 버튼누를시 버튼을 다시클릭할수있게한다.
+       
+	   if(a==1) {
+	   if(obj.equals("Americano")) {
+                
            button.setEnabled(true);                 //선택취소, 전체취소버튼 클릭시 true로 변경 , 우측하단의  spinner에 의해서만 selectNum조절
-           
-         }
+          }
        
        else if(obj.equals("Espresso")) {
           
-          button.setEnabled(true);
+          button_1.setEnabled(true);
             
             
          }else if(obj.equals("Cramel")) {
@@ -728,11 +742,36 @@ public class order extends JFrame {
          }
       
       
-      
+	   }else if(a==2) {
+		   
+		   
+		   button_1.setEnabled(true);
+	       button.setEnabled(true); 
+	      button_2.setEnabled(true); 
+	      button_3.setEnabled(true);
+	      button_4.setEnabled(true);
+	      button_5.setEnabled(true);
+	      button_6.setEnabled(true);
+	      button_7.setEnabled(true);
+	      button_8.setEnabled(true);
+	      button_9.setEnabled(true);
+	      button_10.setEnabled(true);
+	      button_11.setEnabled(true);
+	      button_12.setEnabled(true);
+	      button_13.setEnabled(true);
+	      button_14.setEnabled(true);
+	      button_15.setEnabled(true);
+	      button_16.setEnabled(true); 
+	      button_17.setEnabled(true);
+	      btnNewButton_2.setEnabled(true);
+	      button_21.setEnabled(true);
+	      button_22.setEnabled(true);
+	      button_23.setEnabled(true);
+		   
+		   
+		   
+		   
+	   }
       
    }
-   
-   
-   
-   
 }

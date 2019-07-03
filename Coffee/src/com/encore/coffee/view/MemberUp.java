@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import com.encore.coffee.model.memberVO;
+
 public class MemberUp extends JFrame {
    public JTextField tf_id, tf_name, tf_phone1, tf_phone2, tf_phone3, tf_email;
     public JPasswordField tf_pass, tf_pass2;
@@ -132,6 +134,30 @@ public class MemberUp extends JFrame {
         setVisible(false);
    }// »ý¼ºÀÚ
 
+   public void initText(memberVO vo) {
+	      String pwd = vo.getPwd();
+	      //String phone = vo.getPhone();//"010-1234-5678"
+	      String []phone = vo.getPhone().split("-");// {"010","1234","5678"}
+	      String []birth = vo.getBirth().split("-");
+	      
+	      tf_id.setText(vo.getId());
+	      tf_pass.setText(pwd);
+	      tf_pass2.setText(pwd);
+	      tf_name.setText(vo.getName());
+	      cb_year.setSelectedItem(birth[0]);
+	      cb_month.setSelectedItem(birth[1]);
+	      cb_date.setSelectedItem(birth[1]);
+	   
+	      tf_phone1.setText(phone[0]);
+	      tf_phone2.setText(phone[1]);
+	      tf_phone3.setText(phone[2]);
+	      tf_email.setText(vo.getMail());
+	      
+	      cb_gender.setSelectedItem(vo.getGender());
+	       
+	   }//initText
+   
+   
    public void showMsg(String msg) {
          JOptionPane.showMessageDialog(this, msg);
    }//showMsg

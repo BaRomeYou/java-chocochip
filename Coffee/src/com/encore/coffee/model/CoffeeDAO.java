@@ -53,7 +53,7 @@ public class CoffeeDAO {//회원 가입 로그인
       }
    }
 
-   private void disconnect() {
+   public void disconnect() {
       try {
          if (conn != null)
             conn.close();
@@ -304,7 +304,7 @@ public class CoffeeDAO {//회원 가입 로그인
             sql += "where menuId like ?";
                   
          stmt = conn.prepareStatement(sql);
-         stmt.setString(1, "%"+keyword+"%");
+         stmt.setString(1, keyword+"%");
          rs = stmt.executeQuery();
          if(rs.next()) {
             vo = new productVO();
@@ -357,6 +357,32 @@ public class CoffeeDAO {//회원 가입 로그인
 		}
 		return list;
 	}// findAll
+   
+   public memberVO findById(String id) {
+	      connect();
+	      memberVO vo=null;//조회된 결과행이 없음을 표현
+	      
+	      try {
+	      String sql="select id,pass,name,ssn1,ssn2,phone,addr,job from membership "
+	                     + "where id=?";
+	         stmt = conn.prepareStatement(sql); //sql문 전송
+	           stmt.setString(1, id);
+	         rs = stmt.executeQuery();//전송sql문에 대한 실행 요청 
+	         
+	         if(rs.next()) {//아이디에 일치하는 행이 존재한다면
+	            vo = new memberVO(rs.getString("id"), rs.getString("pwd"),
+	                            rs.getString("name"), rs.getString("birth"), rs.getString("phone"),
+	                            rs.getString("email"), rs.getString("gender"));
+	         }
+	       } catch (SQLException e) {
+	          e.printStackTrace();
+	       }finally {
+	          disconnect();
+	       }
+	      return vo;
+	      
+	   }//findById
+
 
    
 }
