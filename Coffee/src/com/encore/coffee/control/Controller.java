@@ -878,8 +878,22 @@ public class Controller implements ActionListener, MouseListener {
 			prdList.remove(item);
 
 		} else if (obj == crdv.btn_confirm) {
+			  if (crdv.table.getModel().getRowCount() != -1) {
 
-		} else if (obj == crdv.btn_cancel) {
+		            ArrayList<orderVO> list = csv.sumName();
+		            String userId = odr.loginid;
+		            int pId = dao.insertMenu(userId);
+		            dao.insertStock(list, pId);
+		            JOptionPane.showMessageDialog(crdv.frame, "주문 완료되었습니다.");
+		         } else
+		            JOptionPane.showMessageDialog(csv.frame, "구매할아이템이없음!!");
+		      } else if (obj == crdv.btn_cancel) {//카드결제 취소
+		         md.my.clearCanvas();
+		         crdv.frame.setVisible(false);
+		         odr.setVisible(true);
+		      }
+
+		 else if (obj == crdv.btn_cancel) {
 			md.my.clearCanvas();
 			crdv.frame.setVisible(false);
 
