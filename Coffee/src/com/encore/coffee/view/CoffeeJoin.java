@@ -38,7 +38,7 @@ public class CoffeeJoin extends JFrame{
         
         String []gender= {"여성","남성","기타"};
         String []month = {"1","2","3","4","5","6","7","8","9","10","11","12"};
-        String []email = {"==선택==","직접입력", "@gmail.com", "@daum.net", "@naver.com"};
+        String []email = {"==선택==", "직접입력", "@gmail.com", "@daum.net", "@naver.com"};
 
         cb_month = new JComboBox<String>(month);
         la_month= new JLabel("월");
@@ -124,15 +124,15 @@ public class CoffeeJoin extends JFrame{
         add(bt_reset);
         add(bt_checkid);
         
-        setBounds(350,200,450,450);
+        setBounds(350,200,450,480);
         setVisible(false);
       }//생성자
       
       
      public void showMSG(String msg) {
-    	  
-    	  JOptionPane.showMessageDialog(this, msg);
-    	  
+         
+         JOptionPane.showMessageDialog(this, msg);
+         
       }
       
       

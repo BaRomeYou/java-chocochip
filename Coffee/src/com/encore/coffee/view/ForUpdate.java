@@ -18,6 +18,7 @@ public class ForUpdate extends JFrame{
    public JLabel la_id, la_pass;
    
    public JButton bt_login;
+public String loginId;
 
    public ForUpdate() {
       getContentPane().setBackground(Color.WHITE);

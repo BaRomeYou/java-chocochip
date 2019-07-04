@@ -4,24 +4,26 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
 
 public class FindID extends JFrame{
 
    public JButton bt_findID, bt_findPass, bt_close;
 
    public FindID() {
-      getContentPane().setBackground(Color.WHITE);
+      getContentPane().setBackground(SystemColor.inactiveCaptionBorder);
       setTitle("¾ÆÀÌµðºñ¹øÃ£±â");
 
       bt_findPass = new JButton("ºñ¹Ð¹øÈ£Ã£±â");
       bt_findPass.setForeground(Color.BLACK);
-      bt_findPass.setFont(new Font("±¼¸²", Font.BOLD, 15));
-      bt_findPass.setBackground(Color.MAGENTA);
+      bt_findPass.setFont(new Font("µ¸¿ò", Font.BOLD, 17));
+      bt_findPass.setBackground(UIManager.getColor("Button.light"));
       
       bt_findID = new JButton("¾ÆÀÌµðÃ£±â");
       bt_findID.setForeground(Color.BLACK);
-      bt_findID.setFont(new Font("±¼¸²", Font.BOLD, 15));
-      bt_findID.setBackground(Color.MAGENTA);
+      bt_findID.setFont(new Font("µ¸¿ò", Font.BOLD, 17));
+      bt_findID.setBackground(UIManager.getColor("Button.light"));
 
       bt_findPass.setBounds(91,116,154,69);
       bt_findID.setBounds(308,116,163,69);
@@ -33,8 +35,8 @@ public class FindID extends JFrame{
       getContentPane().add(bt_findID);
       
       bt_close = new JButton("´Ý±â");
-      bt_close.setFont(new Font("±¼¸²", Font.PLAIN, 15));
-      bt_close.setBackground(Color.RED);
+      bt_close.setFont(new Font("µ¸¿ò", Font.BOLD, 15));
+      bt_close.setBackground(new Color(255, 102, 102));
       bt_close.setForeground(Color.WHITE);
       bt_close.setBounds(452, 266, 75, 27);
       getContentPane().add(bt_close);
@@ -42,7 +44,9 @@ public class FindID extends JFrame{
       setVisible(false);
       setResizable(false);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
+      
 
    }// »ý¼ºÀÚ
+   
     
 }// FindID

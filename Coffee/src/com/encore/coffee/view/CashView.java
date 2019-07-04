@@ -1,5 +1,7 @@
 package com.encore.coffee.view;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -8,6 +10,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import com.encore.coffee.model.orderVO;
 import com.encore.coffee.model.productVO;
 
 public class CashView {
@@ -73,21 +76,40 @@ public class CashView {
       frame.setVisible(false);
 
    }
-
+   
    public void displayTable(productVO pvo) {
 
-      Object[] rowData = { pvo.getMenu(), pvo.getPrice(), pvo.getQuantity() };
+	      Object[] rowData = { pvo.getMenu(), pvo.getPrice(), pvo.getQuantity() };
 
-      dtm.addRow(rowData);
+	      dtm.addRow(rowData);
 
-   }
+	   }
+
+   
+   
 
    public int sumPrice() { // 현장결제 뷰 텍스트필드출력
-      
-      int sumP = 0;
-      for (int i = 0; i < table.getModel().getRowCount(); i++) {
-         sumP += (Integer) table.getModel().getValueAt(i, 1) * (Integer) table.getModel().getValueAt(i, 2);
-      }
-      return sumP;
-   }
+
+	      int sumP = 0;
+	      for (int i = 0; i < table.getModel().getRowCount(); i++) {
+	         sumP += (Integer) table.getModel().getValueAt(i, 1) * (Integer) table.getModel().getValueAt(i, 2);
+	      }
+	      return sumP;
+	   }
+
+	   public ArrayList<orderVO> sumName() {
+	      ArrayList<orderVO> order = new ArrayList<orderVO>();
+	      for (int i = 0; i < table.getModel().getRowCount(); i++) {
+	         orderVO vo = new orderVO();
+	         System.out.println("?");
+	          //System.out.println(vo.getMenu().add((String)table.getModel().getValueAt(i, 0)));   
+	         vo.setMenu( (String) table.getValueAt(i, 0) );
+	         vo.setCnt( (Integer) table.getValueAt(i, 2) );
+	         order.add(vo);         
+	      }//for
+	      return order;
+	   }
+
+   
+
 }

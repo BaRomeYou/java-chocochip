@@ -206,84 +206,87 @@ public class CoffeeDAO {//회원 가입 로그인
 
    
    public boolean member_up(memberVO vo) { //회원 정보수정 
-      connect();
-      try {
-         String sql = "update membership set pwd=?, birth=?, email=?, gender=?"
-               + "where id=?";
-         stmt = conn.prepareStatement(sql);
-         stmt.setString(1, vo.getPwd());
-         stmt.setString(2, vo.getBirth());
-         stmt.setString(3, vo.getMail());
-         stmt.setString(4, vo.getGender());
-         stmt.setString(5, vo.getId());
-         int t = stmt.executeUpdate();
-         
-         if(t==1)
-            return true;
-      } catch (SQLException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      }
-      
-      return false; 
-      
-         
-   }
+	      connect();
+	      
+	      try {
+	         String sql = "update member set pwd=?, birth=?, phone=?, email=?, gender=?"
+	                       + "where id=?";
+	         stmt = conn.prepareStatement(sql);
+	         stmt.setString(1, vo.getPwd());
+	         stmt.setString(2, vo.getBirth());
+	         stmt.setString(3, vo.getPhone());         
+	         stmt.setString(4, vo.getMail());
+	         stmt.setString(5, vo.getGender());
+	         stmt.setString(6, vo.getId());
+	         int t = stmt.executeUpdate();
+	         
+	         if(t==1)
+	            return true;
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	      
+	      return false;       
+	         
+	   }
+
    
    public ArrayList<memberVO> findSearch(Map<String, String> map){ //관리자 창 -> 회원정보 가져오기 (콤보박스 값별) 
-      connect();
-     
-      ArrayList<memberVO> list = new ArrayList<memberVO>();
-      memberVO vo = null; 
-      try {
-      String sql = "select id, no, name, pwd, birth, gender, phone, email, freq from member ";
-      
-      String title = map.get("title");
-      String keyword = map.get("keyword");
-      
-      
-      if(title.equals("번호"))
-         sql += "where no like ?";
-      else if(title.equals("이름"))
-         sql += "where name like ?";
-      else if (title.equals("아이디"))
-         sql += "where id like ?";
-      
-      else if (title.equals("비밀번호"))
-         sql += "where pwd like ?";
-      else if (title.equals("생일"))
-         sql += "where birth like ?";
-      else if (title.equals("성별"))
-            sql += "where gender like ?";
-      else if (title.equals("전화번호"))
-         sql += "where phone like ?";
-      else if (title.equals("메일"))
-         sql += "where email like ?";
-   
-         stmt = conn.prepareStatement(sql);
-         stmt.setString(1, "%"+keyword+"%");
-         rs = stmt.executeQuery();
-         if(rs.next()) {
-            vo =  new memberVO();
-            vo.setId(rs.getString("id"));
-            vo.setNo(rs.getInt("no"));
-            vo.setName(rs.getString("name"));
-            vo.setPwd(rs.getString("pwd"));
-            vo.setBirth(rs.getString("birth"));
-            vo.setGender(rs.getString("gender"));
-            vo.setPhone(rs.getString("phone"));
-            vo.setMail(rs.getString("email"));
-            vo.setFreq(rs.getInt("freq"));
-             list.add(vo);
-         }
-      } catch (SQLException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      } finally {
-         disconnect();
-      }
-      return list; 
-   }
+	      connect();
+	     
+	      ArrayList<memberVO> list = new ArrayList<memberVO>();
+	      memberVO vo = null; 
+	      try {
+	      String sql = "select id, no, name, pwd, birth, gender, phone, email, freq from member ";
+	      
+	      String title = map.get("title");
+	      String keyword = map.get("keyword");
+	      
+	      
+	      if(title.equals("번호"))
+	         sql += "where no like ?";
+	      else if(title.equals("이름"))
+	         sql += "where name like ?";
+	      else if (title.equals("아이디"))
+	         sql += "where id like ?";
+	      
+	      else if (title.equals("비밀번호"))
+	         sql += "where pwd like ?";
+	      else if (title.equals("생일"))
+	         sql += "where birth like ?";
+	      else if (title.equals("성별"))
+	            sql += "where gender like ?";
+	      else if (title.equals("전화번호"))
+	         sql += "where phone like ?";
+	      else if (title.equals("메일"))
+	         sql += "where email like ?";
+	   
+	         stmt = conn.prepareStatement(sql);
+	         stmt.setString(1, "%"+keyword+"%");
+	         rs = stmt.executeQuery();
+	         if(rs.next()) {
+	            vo =  new memberVO();
+	            vo.setId(rs.getString("id"));
+	            vo.setNo(rs.getInt("no"));
+	            vo.setName(rs.getString("name"));
+	            vo.setPwd(rs.getString("pwd"));
+	            vo.setBirth(rs.getString("birth"));
+	            vo.setGender(rs.getString("gender"));
+	            vo.setPhone(rs.getString("phone"));
+	            vo.setMail(rs.getString("email"));
+	            vo.setFreq(rs.getInt("freq"));
+	             list.add(vo);
+	         }
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } finally {
+	         disconnect();
+	      }
+	      return list; 
+	   }
+
    
    public ArrayList<productVO> findProductSearch(Map<String,String> map) {
          connect();
@@ -291,7 +294,7 @@ public class CoffeeDAO {//회원 가입 로그인
          ArrayList<productVO> list = new ArrayList<productVO>();
          productVO vo = null;
          try {      
-         String sql = "select menuId, menu, price, quantity from menu ";
+         String sql = "select menuId, menu, price from menu ";
          String title = map.get("title");
          String keyword = map.get("keyword");
          
@@ -311,7 +314,6 @@ public class CoffeeDAO {//회원 가입 로그인
             vo.setMenu_id(rs.getString("menuId"));
             vo.setMenu(rs.getString("menu"));
             vo.setPrice(rs.getInt("price"));
-            vo.setQuantity(rs.getInt("quantity"));
             list.add(vo);
          }
          
@@ -359,29 +361,84 @@ public class CoffeeDAO {//회원 가입 로그인
 	}// findAll
    
    public memberVO findById(String id) {
-	      connect();
-	      memberVO vo=null;//조회된 결과행이 없음을 표현
-	      
-	      try {
-	      String sql="select id,pass,name,ssn1,ssn2,phone,addr,job from membership "
-	                     + "where id=?";
-	         stmt = conn.prepareStatement(sql); //sql문 전송
-	           stmt.setString(1, id);
-	         rs = stmt.executeQuery();//전송sql문에 대한 실행 요청 
-	         
-	         if(rs.next()) {//아이디에 일치하는 행이 존재한다면
-	            vo = new memberVO(rs.getString("id"), rs.getString("pwd"),
-	                            rs.getString("name"), rs.getString("birth"), rs.getString("phone"),
-	                            rs.getString("email"), rs.getString("gender"));
-	         }
-	       } catch (SQLException e) {
-	          e.printStackTrace();
-	       }finally {
-	          disconnect();
-	       }
-	      return vo;
-	      
-	   }//findById
+       connect();
+       memberVO vo=null;//조회된 결과행이 없음을 표현
+       
+       try {
+       String sql="select id,pwd,name,birth,phone,email,gender from member "
+                      + "where id=?";
+          stmt = conn.prepareStatement(sql); //sql문 전송
+            stmt.setString(1, id);
+          rs = stmt.executeQuery();//전송sql문에 대한 실행 요청 
+          
+          if(rs.next()) {//아이디에 일치하는 행이 존재한다면
+             vo = new memberVO(rs.getString("id"), rs.getString("pwd"),
+                             rs.getString("name"), rs.getString("birth"), rs.getString("phone"),
+                             rs.getString("email"), rs.getString("gender"));
+          }
+        } catch (SQLException e) {
+           e.printStackTrace();
+        }finally {
+           disconnect();
+        }
+       return vo;
+       
+    }//findById
+
+
+   // 캐쉬뷰,카드뷰 결제확인버튼 클릭시
+   public int insertMenu(String id) {
+      //System.out.println(">>>>>>>>>>>>>  1번: insertMenu");
+      connect();
+      int pId=0;
+      try {
+         String sql = "INSERT INTO purchase (purchaseid, id, buydate) " 
+                  + "VALUES(purchase_seq.nextval,?,SYSDATE)";
+
+         stmt = conn.prepareStatement(sql);
+
+         stmt.setString(1, id);// id
+          System.out.println("추가::"+stmt.executeUpdate());
+
+          sql="select purchase_seq.currval from dual";
+          
+          stmt  = conn.prepareStatement(sql);
+         rs = stmt.executeQuery();
+         rs.next(); 
+         pId= rs.getInt(1);
+         //System.out.println("추가된 주문번호>>>"+ rs.getInt(1));
+          
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } finally {
+         disconnect();
+      }
+      return pId;
+   } //insertMenu
+
+   // 캐쉬뷰,카드뷰 결제확인버튼 클릭시
+   public void insertStock(ArrayList<orderVO>menu, int pId) {
+      //System.out.println(">>>>>>>>>>>>>  2번: insertStock");
+      connect();
+
+      try {
+         
+         
+         String sql2 = "INSERT INTO stock (purchaseId, menu, quan)" 
+               + "VALUES(?,?,?)";
+         stmt = conn.prepareStatement(sql2);
+         for (int i = 0; i < menu.size(); i++) {
+            stmt.setInt(1, pId);// id
+            stmt.setString(2, menu.get(i).getMenu());// id
+            stmt.setInt(3, menu.get(i).getCnt());// id
+            stmt.executeUpdate();
+         }
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } finally {
+         disconnect();
+      }
+   } //insertStock 
 
 
    
