@@ -440,6 +440,44 @@ public class CoffeeDAO {//회원 가입 로그인
       }
    } //insertStock 
 
+   public ArrayList<productVO> searchProductAll() {
+	   connect();
+	   String menu = "";
+	   int quant=0;
+	   ArrayList <productVO> list = new ArrayList<productVO>();
+	   
+	   String sql = "select menuId, stock.menu, price, sum(quan) from menu inner join stock on menu.menu = stock.menu "
+	   		+ "group by menuId, stock.menu, price";
+	   
+	   try {
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		while(rs.next()) {
+			productVO vo = new productVO();
+			menu=rs.getString("menu");
+			quant = rs.getInt("sum(quan)");
+			vo.setMenu_id(rs.getString("menuId"));
+			vo.setMenu(menu);
+			vo.setPrice(rs.getInt("price"));
+			vo.setQuantity(quant);
+	
+			list.add(vo);
+		}
+	
+		
+		
+	
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally {
+		   disconnect();
+	   }
+		System.out.println(list);
+	   return list; 
+	   
+   }
 
    
 }

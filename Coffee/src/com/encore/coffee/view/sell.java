@@ -199,7 +199,19 @@ public class sell extends JFrame {
          dtm.addRow(rowData);
          
       }
-
-   }//displayTable
+     
+      }//displayTable
+   
+   public void displayProductAll(ArrayList<productVO> list) {
+	   dtm.setRowCount(0);
+	   
+	   
+	   for (int i = 0; i < list.size(); i++) {
+		   productVO vo = list.get(i);
+		   Object[] rowData = {vo.getMenu_id(),vo.getMenu(),vo.getPrice(), vo.getQuantity()};
+		   dtm.addRow(rowData);
+		
+	}
+   }//displayProductAll
    
 }

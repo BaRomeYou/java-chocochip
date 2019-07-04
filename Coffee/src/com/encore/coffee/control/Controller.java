@@ -890,7 +890,8 @@ public class Controller implements ActionListener, MouseListener {
 				// System.out.println("===============");
 
 				ArrayList<orderVO> list = csv.sumName();
-				String userId = odr.loginid2;
+				String userId = odr.loginid;
+				System.out.println("userId>>>"+ userId);
 				int pId = dao.insertMenu(userId);
 				dao.insertStock(list, pId);
 			} else
@@ -957,15 +958,26 @@ public class Controller implements ActionListener, MouseListener {
 		}
 
 		else if (obj == sell.btnDw) {
+			
+			
+			
 			Map<String, String> map = sell.productSearch();
 			CoffeeDAO dao = new CoffeeDAO();
 			ArrayList<productVO> list = dao.findProductSearch(map);
 			sell.displayProductTable(list);
 		} else if (obj == odr.button_24) { // 관리자 로그인 버튼
+			
+			ArrayList <productVO> list2 = dao.searchProductAll();
+			sell.displayProductAll(list2);
+			
+		
+			
 			if (odr.loginid.equals("admin")) {
 				JOptionPane.showMessageDialog(odr, "관리자 인증 되었습니다");
 				odr.auth = true;
 				sell.setVisible(true);
+				ArrayList<productVO> list = dao.searchProductAll();
+				sell.displayProductAll(list);
 			} else {
 				JOptionPane.showMessageDialog(odr, "관리자 인증이 필요합니다");
 				return;
