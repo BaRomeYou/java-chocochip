@@ -6,6 +6,7 @@ public class productVO {
 	private String menu;
 	private int price;
 	private int quantity;
+	private int sumPrice;
 	
 	
 	public productVO() {
@@ -22,6 +23,21 @@ public class productVO {
 		this.quantity = quantity;
 	}
 	
+	
+	
+	
+	public int getSumPrice() {
+		return sumPrice;
+	}
+
+
+
+	public void setSumPrice(int sumPrice) {
+		this.sumPrice = sumPrice;
+	}
+
+
+
 	public String getMenu_id() {
 		return menu_id;
 	}

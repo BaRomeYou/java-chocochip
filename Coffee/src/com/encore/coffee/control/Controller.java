@@ -53,7 +53,7 @@ public class Controller implements ActionListener, MouseListener {
 	int listNum = 1; // order뷰에서 맨왼쪽에 위치한 번호
 	int selectNum = 1; // 갯수=0;
 	int orderMoney = 0;
-
+	public int ame,espre,  cara, capu, latte, dolche;
 	public HashMap<String, productVO> prdList;// ★ import 패키지명 수정해야함★
 	Object selecItem;
 
@@ -108,6 +108,7 @@ public class Controller implements ActionListener, MouseListener {
 		upLogin.bt_login.addActionListener(this);
 
 		// sell_g
+		sell_g.button.addActionListener(this);
 
 		// sell
 
@@ -814,7 +815,7 @@ public class Controller implements ActionListener, MouseListener {
 			odr.buttonSet(item2, 2);
 
 			// System.out.println(prdList.get("Americano"));
-			System.out.println(prdList.keySet());
+		//	System.out.println(prdList.keySet());
 
 		} else if (obj == odr.button_19) {
 			csv.frame.setVisible(true);
@@ -905,7 +906,7 @@ public class Controller implements ActionListener, MouseListener {
 
 				ArrayList<orderVO> list = csv.sumName();
 				String userId = odr.loginid;
-				System.out.println("userId>>>"+ userId);
+				//System.out.println("userId>>>"+ userId);
 				int pId = dao.insertMenu(userId);
 				dao.insertStock(list, pId);
 			} else
@@ -981,15 +982,11 @@ public class Controller implements ActionListener, MouseListener {
 			sell.displayProductTable(list);
 		} else if (obj == odr.button_24) { // 관리자 로그인 버튼
 			
-			ArrayList <productVO> list2 = dao.searchProductAll();
-			sell.displayProductAll(list2);
-			
-		
-			
 			if (odr.loginid.equals("admin")) {
 				JOptionPane.showMessageDialog(odr, "관리자 인증 되었습니다");
 				odr.auth = true;
 				sell.setVisible(true);
+				odr.setVisible(false);
 				ArrayList<productVO> list = dao.searchProductAll();
 				sell.displayProductAll(list);
 			} else {
@@ -997,12 +994,41 @@ public class Controller implements ActionListener, MouseListener {
 				return;
 			}
 
+			
+			//총수입구하기 
+			String totalP = dao.sumTotalP()+"";
+			sell.textField.setText(totalP);
+			
+			//총인원구하기 
+			
+			String totalM = dao.sumTotalM()+"";
+			sell.textField_1.setText(totalM);
+					
+			
+			//회원전체 띄우기 
+			ArrayList<memberVO> list3 = dao.findMemberAll();
+			sell.displayTable(list3);
+			
+			
+			//상품전체 띄우기 (수량포함) 
+			ArrayList <productVO> list2 = dao.searchProductAll();
+			sell.displayProductAll(list2);
+			
+		
+			
+		
 		} else if (obj == odr.btnNewButton_3) {
 			dao.disconnect();
 			JOptionPane.showMessageDialog(odr, "로그아웃 되었습니다");
 			odr.setVisible(false);
 			loginView.setVisible(true);
+		}else if (obj==sell.btnGr) {
+			sell_g.frame.setVisible(true);
+	         sell_g.threwItem(ame, espre, cara,capu,latte,dolche);
+		}else if (obj==sell_g.button) {
+			
 		}
+	
 
 	}
 

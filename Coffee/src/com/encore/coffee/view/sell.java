@@ -24,7 +24,7 @@ public class sell extends JFrame {
    JPanel p1, p2;
    private JPanel contentPane;
    private JLabel lblNewLabel;
-   private JTextField textField;
+   public JTextField textField;
 
    /**
     * Launch the application.
@@ -50,8 +50,8 @@ public class sell extends JFrame {
    JScrollPane scroll_table, scroll_table2;
    public JButton btnDw,bt_mem;
    public JButton btnGr;
-   private JTextField textField_1;
-   private JTextField textField_2;
+   public JTextField textField_1;
+   public JTextField textField_2;
    public JComboBox comboBox, comboBox2;
 
    public sell() {
@@ -94,7 +94,7 @@ public class sell extends JFrame {
       scroll_table2.setBounds(131, 53, 424, 328);
       p1.add(scroll_table2);
 
-      textField = new JTextField();
+      textField = new JTextField("ÀÌ°Å?");
       textField.setBounds(57, 182, 62, 24);
       p2.add(textField);
       textField.setColumns(10);
@@ -214,4 +214,5 @@ public class sell extends JFrame {
 	}
    }//displayProductAll
    
+ 
 }

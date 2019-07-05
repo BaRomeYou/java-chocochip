@@ -101,7 +101,7 @@ public class CashView {
 	      ArrayList<orderVO> order = new ArrayList<orderVO>();
 	      for (int i = 0; i < table.getModel().getRowCount(); i++) {
 	         orderVO vo = new orderVO();
-	         System.out.println("?");
+	        
 	          //System.out.println(vo.getMenu().add((String)table.getModel().getValueAt(i, 0)));   
 	         vo.setMenu( (String) table.getValueAt(i, 0) );
 	         vo.setCnt( (Integer) table.getValueAt(i, 2) );
